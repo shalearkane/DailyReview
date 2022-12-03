@@ -9,6 +9,7 @@ class Friendship(models.Model):
     to_user = models.ForeignKey(
         User, on_delete=models.CASCADE, null=False, blank=False, related_name="fs_to"
     )
+    created = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         unique_together = ("from_user", "to_user")
@@ -21,6 +22,9 @@ class FriendshipRequests(models.Model):
     to_user = models.ForeignKey(
         User, on_delete=models.CASCADE, null=False, blank=False, related_name="fr_to"
     )
+
+    created = models.DateTimeField(auto_now_add=True)
+    rejected = models.BooleanField(default=False)
 
     class Meta:
         unique_together = ("from_user", "to_user")

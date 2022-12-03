@@ -25,6 +25,8 @@ class Review(models.Model):
     title = models.CharField(max_length=255, default="Today's Review")
     text = models.TextField()
     personal_thoughts = models.TextField()
+    published = models.BooleanField(default=True)
+    updated = models.DateTimeField(auto_now=True)
 
     class Meta:
         unique_together = (

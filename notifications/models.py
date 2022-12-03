@@ -7,4 +7,5 @@ class Notification(models.Model):
         User, on_delete=models.CASCADE, null=False, blank=False
     )
     text = models.CharField(max_length=1000)
-    datetime = models.DateTimeField(auto_now_add=True)
+    created = models.DateTimeField(auto_now_add=True)
+    viewed = models.BooleanField(default=False)
