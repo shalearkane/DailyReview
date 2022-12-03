@@ -12,8 +12,10 @@ class Review(models.Model):
         (FRIENDS, "Friends"),
     ]
 
-    user = models.ForeignKey(User, null=False, blank=False, on_delete=models.CASCADE)
-    date = models.DateField()
+    user = models.ForeignKey(
+        User, null=False, blank=False, on_delete=models.CASCADE, editable=False
+    )
+    date = models.DateField(auto_now_add=True, editable=False)
     visibility = models.CharField(
         choices=VISIBILITY_CHOICES,
         max_length=2,

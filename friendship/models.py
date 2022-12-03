@@ -4,10 +4,20 @@ from django.contrib.auth.models import User
 # Create your models here.
 class Friendship(models.Model):
     from_user = models.ForeignKey(
-        User, on_delete=models.CASCADE, null=False, blank=False, related_name="fs_from"
+        User,
+        on_delete=models.CASCADE,
+        null=False,
+        blank=False,
+        related_name="fs_from",
+        editable=False,
     )
     to_user = models.ForeignKey(
-        User, on_delete=models.CASCADE, null=False, blank=False, related_name="fs_to"
+        User,
+        on_delete=models.CASCADE,
+        null=False,
+        blank=False,
+        related_name="fs_to",
+        editable=False,
     )
     created = models.DateTimeField(auto_now_add=True)
 
@@ -17,13 +27,23 @@ class Friendship(models.Model):
 
 class FriendshipRequests(models.Model):
     from_user = models.ForeignKey(
-        User, on_delete=models.CASCADE, null=False, blank=False, related_name="fr_from"
+        User,
+        on_delete=models.CASCADE,
+        null=False,
+        blank=False,
+        related_name="fr_from",
+        editable=False,
     )
     to_user = models.ForeignKey(
-        User, on_delete=models.CASCADE, null=False, blank=False, related_name="fr_to"
+        User,
+        on_delete=models.CASCADE,
+        null=False,
+        blank=False,
+        related_name="fr_to",
+        editable=False,
     )
 
-    created = models.DateTimeField(auto_now_add=True)
+    created = models.DateTimeField(auto_now_add=True, editable=False)
     rejected = models.BooleanField(default=False)
 
     class Meta:
