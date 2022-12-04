@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Friendship(models.Model):
+    # you
     from_user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
@@ -11,6 +12,7 @@ class Friendship(models.Model):
         related_name="fs_from",
         editable=False,
     )
+    # your friend
     to_user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,

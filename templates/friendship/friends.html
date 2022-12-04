@@ -1,170 +1,73 @@
 {% extends "base.html" %}
 {% load static %}
 {% load socialaccount %}
-
 {% block content %}
-<head>
-    <link rel="stylesheet" href="{% static 'friends.css' %}">
-</head>
-
-<body>
-    <div class="title">
-        Friends Zone!!
-    </div>
-    <div class="title-left">
-        Your Friends
-    </div>
-    <div class="current-friends">
-        <div class="grid-container">
-            <div class="card">
-                <img src="{% static 'images/sample_friend.jpg' %}" class="card-img-top" alt="">
-                <div class="card-body">
-                <h6 class="card-title">Somya Bansal</h5>
-                <p class="card-text">@somib</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="{% static 'images/sample_friend.jpg' %}" class="card-img-top" alt="">
-                <div class="card-body">
-                <h6 class="card-title">Somya Bansal</h5>
-                <p class="card-text">@somib</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="{% static 'images/sample_friend.jpg' %}" class="card-img-top" alt="">
-                <div class="card-body">
-                <h6 class="card-title">Somya Bansal</h5>
-                <p class="card-text">@somib</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="{% static 'images/sample_friend.jpg' %}" class="card-img-top" alt="">
-                <div class="card-body">
-                <h6 class="card-title">Somya Bansal</h5>
-                <p class="card-text">@somib</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="{% static 'images/sample_friend.jpg' %}" class="card-img-top" alt="">
-                <div class="card-body">
-                <h6 class="card-title">Somya Bansal</h5>
-                <p class="card-text">@somib</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="{% static 'images/sample_friend.jpg' %}" class="card-img-top" alt="">
-                <div class="card-body">
-                <h6 class="card-title">Somya Bansal</h5>
-                <p class="card-text">@somib</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="{% static 'images/sample_friend.jpg' %}" class="card-img-top" alt="">
-                <div class="card-body">
-                <h6 class="card-title">Somya Bansal</h5>
-                <p class="card-text">@somib</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="{% static 'images/sample_friend.jpg' %}" class="card-img-top" alt="">
-                <div class="card-body">
-                <h6 class="card-title">Somya Bansal</h5>
-                <p class="card-text">@somib</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="{% static 'images/sample_friend.jpg' %}" class="card-img-top" alt="">
-                <div class="card-body">
-                <h6 class="card-title">Somya Bansal</h5>
-                <p class="card-text">@somib</p>
-                </div>
+    <head>
+        <link rel="stylesheet" href="{% static 'friends.css' %}">
+    </head>
+    <body>
+        <div class="title">Friends Zone!!</div>
+        <div class="title-left">Your Friends</div>
+        <div class="current-friends">
+            <div class="grid-container">
+                {% for friend in friends_list %}
+                    <div class="card">
+                        <img src="{{ friend.to_user.socialaccount_set.all.0.get_avatar_url }}"
+                             class="card-img-top"
+                             alt="avatar">
+                        <div class="card-body">
+                            <h6 class="card-title">{{ friend.to_user.username }}</h6>
+                            <p class="card-text">{{ friend.to_user.email }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
         </div>
-    </div>
-
-    <div class="add-friend">
-        <div id="connect" class="connect">
-            Connect to someone you may know
-        </div>
-        <div id="mainDropDown" class="dropdown">
-            <input onclick="myFunction()" type="text" placeholder="Search by Username or Email ID" id="myInput" onkeyup="filterFunction()">
-            <div id="myDropdown" class="dropdown-content">
-              <div class="friend">
-                    <div><img src="{% static 'images/sample_friend.jpg' %}"></div>
-                    <div><p>@friend1</p><p>friend1ddddddddddddddddd@gmail.com</p></div>
-                    <div><form class="send-request" type="submit">Add Friend</form></div>
-              </div>
-              <div class="friend">
-                    <div><img src="{% static 'images/sample_friend.jpg' %}"></div>
-                    <div><p>@friend1</p><p>friend1@gmail.com</p></div>
-                    <div><form class="send-request" type="submit">Add Friend</form></div>
-              </div>
-              <div class="friend">
-                    <div><img src="{% static 'images/sample_friend.jpg' %}"></div>
-                    <div><p>@friend1</p><p>friend1@gmail.com</p></div>
-                    <div><form class="send-request" type="submit">Add Friend</form></div>
-              </div>
-              <div class="friend">
-                    <div><img src="{% static 'images/sample_friend.jpg' %}"></div>
-                    <div><p>@friend1</p><p>friend1@gmail.com</p></div>
-                    <div><form class="send-request" type="submit">Add Friend</form></div>
-              </div>
-              <div class="friend">
-                    <div><img src="{% static 'images/sample_friend.jpg' %}"></div>
-                    <div><p>@friend1</p><p>friend1@gmail.com</p></div>
-                    <div><form class="send-request" type="submit">Add Friend</form></div>
-              </div>
-              <div class="friend">
-                    <div><img src="{% static 'images/sample_friend.jpg' %}"></div>
-                    <div><p>@friend1</p><p>friend1@gmail.com</p></div>
-                    <div><form class="send-request" type="submit">Add Friend</form></div>
-              </div>
-              <div class="friend">
-                    <div><img src="{% static 'images/sample_friend.jpg' %}"></div>
-                    <div><p>@friend1</p><p>friend1@gmail.com</p></div>
-                    <div><form class="send-request" type="submit">Add Friend</form></div>
-              </div>
+        <div class="add-friend">
+            <div id="connect" class="connect">Connect to someone you may know</div>
+            <div id="mainDropDown" class="dropdown">
+                <input onclick="myFunction()"
+                       type="text"
+                       placeholder="Search by Username or Email ID"
+                       id="myInput"
+                       onkeyup="filterFunction()">
+                <div id="myDropdown" class="dropdown-content"></div>
             </div>
         </div>
-    </div>
+        <script>
+            $(document).ready(function() {
+                $.ajax({
+                    url: "{% url 'discover-friends' %}",
+                    method: "GET",
+                    success: function (data, status, xhr) {
+                        var $dropdown = $("#mainDropDown");
+                        data = JSON.parse(data)
+                        console.log("this is happening")
+                        console.log(data)
+                        $.each(data, function(key, value) {
+                            $dropdown.append(
+                                `
+                                <div class="friend">
+                                    <div><p>${value.username}</p><p>${value.email}</p></div>
+                                    <div><form class="send-request" type="submit">Add Friend</form></div>
+                                </div>
+                                `
+                            );
+                        });
+                    },
+                    error: function (xhr, status, err) {
+                    alert("Something went wrong");
+                    }
+                });
+            })
 
-    {% block script %}
-    <script>
-        /* When the user clicks on the button,
-        toggle between hiding and showing the dropdown content */
-        function myFunction() {
-          document.getElementById("connect").classList.toggle("shift-connect");
-          document.getElementById("mainDropDown").classList.toggle("shift-dropdown");
-          document.getElementById("myDropdown").classList.toggle("show");
-        }
-        
-        {% comment %} function filterFunction() {
-          var input, filter, ul, li, a, i;
-          input = document.getElementById("myInput");
-          filter = input.value.toUpperCase();
-          div = document.getElementById("myDropdown");
-          div = div.getElementsByTagName("div")
-          a = div.getElementsByTagName("p");
-          for (i = 0; i < a.length; i++) {
-            txtValue = a[i].textContent || a[i].innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-              a[i].style.display = "";
-            } else {
-              a[i].style.display = "none";
+            /* When the user clicks on the button,
+            toggle between hiding and showing the dropdown content */
+            function myFunction() {
+            document.getElementById("connect").classList.toggle("shift-connect");
+            document.getElementById("mainDropDown").classList.toggle("shift-dropdown");
+            document.getElementById("myDropdown").classList.toggle("show");
             }
-          }
-        } this function currently not working {% endcomment %}
-    </script>
-
-    {% endblock script %}
-
-</body>
-{% endblock %}
+        </script>
+    </body>
+{% endblock content %}
