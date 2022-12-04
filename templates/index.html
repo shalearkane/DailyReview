@@ -35,42 +35,4 @@
         </div>
     </div>
 </body>
-{% extends "base.html" %}
-{% load static %}
-{% load socialaccount %}
-
-{% block content %}
-<head>
-    <link rel="stylesheet" href="{% static 'index.css' %}">
-</head>
-
-<body>
-    {% if user.is_authenticated %}
-        <div class="welcome"><p>Welcome {{ user.username }}!</p></div>
-    {% else %}
-        <a href="{% provider_login_url 'google' %}" style="text-decoration: none">
-            <div class="google">
-                <div><img src="{% static 'images/google.png' %}" class="google_img"></div>
-                <div><p class="google_text">Login With Google</p></div>
-            </div>
-        </a>
-    {% endif %}
-
-    <div class="content">
-        <div class="him flex-container">
-            <div><img src="{% static 'images/him.jpg' %}" alt=""></div>
-            <div class="text">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum veritatis a porro ipsum molestias quis vero quod expedita quia assumenda? Neque obcaecati perferendis mollitia sunt nostrum quos recusandae harum quae aspernatur nam maxime labore reprehenderit quisquam eius excepturi deserunt eos cupiditate, minima officiis autem aliquam molestiae enim sit! Voluptates, maxime.
-            </div>
-        </div>
-
-        <div class="her flex-container">
-            <div class="text">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus praesentium corporis ipsa est atque totam, ea eaque porro ipsam vero dolore nisi, amet magnam consectetur aperiam quasi quaerat aliquam velit provident. Iste exercitationem debitis nostrum voluptatibus ab, quis fuga eos! Totam sed cupiditate laudantium vel nisi, soluta blanditiis ut voluptatem?
-            </div>
-            <div><img src="{% static 'images/her.jpg' %}" alt=""></div>
-        </div>
-    </div>
-</body>
-
 {% endblock content %}
