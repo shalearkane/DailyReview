@@ -5,6 +5,7 @@ body {
     background-size: cover;
     background-position-y: 30%;
     background-attachment: fixed;
+    overflow-y: overlay;
 }
 
 nav {
@@ -56,19 +57,13 @@ input, select {
 /* width */
 ::-webkit-scrollbar {
   width: 7px;
-  margin-right: 2px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  width: 0rem;
+  display: block;
 }
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: grey; 
+  background: rgb(128, 128, 128, 0.5); 
   border-radius: 0.5rem;
-  margin-right: 2px
 }
 
 /* Handle on hover */
