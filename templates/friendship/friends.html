@@ -8,6 +8,12 @@
 </head>
 
 <body>
+    <div class="title">
+        Friends Zone!!
+    </div>
+    <div class="title-left">
+        Your Friends
+    </div>
     <div class="current-friends">
         <div class="grid-container">
             <div class="card">
@@ -85,15 +91,80 @@
     </div>
 
     <div class="add-friend">
-        <div class="connect">
-            Find friends
+        <div id="connect" class="connect">
+            Connect to someone you may know
         </div>
-        <div>
-        </div>
-        <div class="image">
-            <img src="{% static 'images/friends.png' %}">
+        <div id="mainDropDown" class="dropdown">
+            <input onclick="myFunction()" type="text" placeholder="Search by Username or Email ID" id="myInput" onkeyup="filterFunction()">
+            <div id="myDropdown" class="dropdown-content">
+              <div class="friend">
+                    <div><img src="{% static 'images/sample_friend.jpg' %}"></div>
+                    <div><p>@friend1</p><p>friend1ddddddddddddddddd@gmail.com</p></div>
+                    <div><form class="send-request" type="submit">Add Friend</form></div>
+              </div>
+              <div class="friend">
+                    <div><img src="{% static 'images/sample_friend.jpg' %}"></div>
+                    <div><p>@friend1</p><p>friend1@gmail.com</p></div>
+                    <div><form class="send-request" type="submit">Add Friend</form></div>
+              </div>
+              <div class="friend">
+                    <div><img src="{% static 'images/sample_friend.jpg' %}"></div>
+                    <div><p>@friend1</p><p>friend1@gmail.com</p></div>
+                    <div><form class="send-request" type="submit">Add Friend</form></div>
+              </div>
+              <div class="friend">
+                    <div><img src="{% static 'images/sample_friend.jpg' %}"></div>
+                    <div><p>@friend1</p><p>friend1@gmail.com</p></div>
+                    <div><form class="send-request" type="submit">Add Friend</form></div>
+              </div>
+              <div class="friend">
+                    <div><img src="{% static 'images/sample_friend.jpg' %}"></div>
+                    <div><p>@friend1</p><p>friend1@gmail.com</p></div>
+                    <div><form class="send-request" type="submit">Add Friend</form></div>
+              </div>
+              <div class="friend">
+                    <div><img src="{% static 'images/sample_friend.jpg' %}"></div>
+                    <div><p>@friend1</p><p>friend1@gmail.com</p></div>
+                    <div><form class="send-request" type="submit">Add Friend</form></div>
+              </div>
+              <div class="friend">
+                    <div><img src="{% static 'images/sample_friend.jpg' %}"></div>
+                    <div><p>@friend1</p><p>friend1@gmail.com</p></div>
+                    <div><form class="send-request" type="submit">Add Friend</form></div>
+              </div>
+            </div>
         </div>
     </div>
+
+    {% block script %}
+    <script>
+        /* When the user clicks on the button,
+        toggle between hiding and showing the dropdown content */
+        function myFunction() {
+          document.getElementById("connect").classList.toggle("shift-connect");
+          document.getElementById("mainDropDown").classList.toggle("shift-dropdown");
+          document.getElementById("myDropdown").classList.toggle("show");
+        }
+        
+        {% comment %} function filterFunction() {
+          var input, filter, ul, li, a, i;
+          input = document.getElementById("myInput");
+          filter = input.value.toUpperCase();
+          div = document.getElementById("myDropdown");
+          div = div.getElementsByTagName("div")
+          a = div.getElementsByTagName("p");
+          for (i = 0; i < a.length; i++) {
+            txtValue = a[i].textContent || a[i].innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              a[i].style.display = "";
+            } else {
+              a[i].style.display = "none";
+            }
+          }
+        } this function currently not working {% endcomment %}
+    </script>
+
+    {% endblock script %}
 
 </body>
 {% endblock %}
