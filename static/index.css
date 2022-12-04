@@ -1,0 +1,71 @@
+.welcome {
+    color: white;
+    margin: auto;
+    width: 15%;
+    margin-top: 15vh;
+    font-size: 1.7rem;
+    font-weight: bolder;
+}
+
+.welcome > p {
+    text-shadow: 4px 6px 4px black;
+}
+
+.google {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 6rem 30rem;
+    border: 3px solid rgb(76, 54, 16);
+    border-radius: 0.7rem;
+    transition-duration: 0.1s;
+}
+
+.google:hover {
+    transform: scale(1.02);
+    background-color: rgb(76, 54, 16);
+}
+
+.google:active {
+    transform: scale(1);
+    background-color: rgb(104, 75, 25);
+    border-color: rgb(104, 75, 25);
+}
+
+.google_text {
+    color: rgb(235, 235, 235);
+    padding-top: 1rem;
+    font-size: 1.3rem;
+}
+
+.google_img {
+    width: 1.5rem;
+    margin-right: 1rem;
+}
+
+.content {
+    position: absolute;
+    top: 60%;
+    background-color: white;
+    box-shadow: 2px 0px 7px 1px rgb(60, 60, 60);
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    margin: 4% 4%;
+    background-color:rgba(223, 233, 237, 0.8);
+    border-radius: 0.6rem;
+    box-shadow: 0px 0px 7px -4px rgb(157, 157, 157);
+    overflow: hidden;
+}
+
+.flex-container > div > img {
+    width: 100%;
+}
+
+.text {
+    padding: 2.6rem;
+}

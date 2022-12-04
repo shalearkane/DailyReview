@@ -20,29 +20,24 @@
           integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw=="
           crossorigin="anonymous"
           referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" 
+          href="{% static 'mystyle.css' %}">
+    <link rel="preconnect" 
+          href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap">
     {% block title %}
-      <title>Daily Review</title>
+      <title>Review Your Day</title>
     {% endblock title %}
-    {% block style %}
-      <style>
-    input, select {
-      border: 1px solid #aaa;
-      border-radius: 3px;
-      padding: 5px;
-      background-color: transparent;
-      margin-left: 3px;
-    }
-      </style>
-    {% endblock style %}
+
     {% block script %}
       <script></script>
     {% endblock script %}
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark"
-         style="background-color:#9c317e">
+    <nav class="navbar navbar-expand-lg navbar-light">
       <div class="container-fluid">
-        <a class="navbar-brand" style="color:white;">Daily Review</a>
+        <a class="navbar-brand">Review Your Day</a>
         <button class="navbar-toggler"
                 type="button"
                 data-bs-toggle="collapse"
@@ -59,15 +54,11 @@
             {% if user.is_authenticated %}
               <a class="btn btn-info align-middle"
                  href="{% url 'logout' %}"
-                 role="button"
-                 style="background-color:white;
-                        border-color:white">Logout</a>
+                 role="button">Logout</a>
             {% else %}
               <a class="btn btn-info align-middle"
                  href="{% provider_login_url 'google' %}"
-                 role="button"
-                 style="background-color:white;
-                        border-color:white">Login</a>
+                 role="button">Login</a>
             {% endif %}
           </form>
         </div>

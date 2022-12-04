@@ -1,0 +1,60 @@
+.card-title {
+    line-height: 0.4rem;
+    color: white;
+}
+
+.card {
+    background-color: transparent;
+    border-color: transparent;
+    width: 15rem;
+    align-items: center;
+    padding-top: 1.2rem;
+}
+
+.card-img-top {
+    border-radius: 10rem;
+    width: 9rem;
+}
+
+.card-text {
+    font-size: 0.8rem;
+    color: rgb(183, 182, 180);
+}
+
+.current-friends {
+    height: 70vh;
+    overflow-y: scroll;
+    position: absolute;
+    left: 18vw;
+    top: 23vh;
+}
+
+.grid-container {
+    display: inline-grid;
+    grid-template-columns: auto auto;
+    background: linear-gradient(rgba(199, 191, 180, 0.1), rgba(199, 191, 180, 0.2));
+}
+
+.card-body {
+    width: 10rem;
+}
+
+.add-friend {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(rgba(199, 191, 180, 0.1), rgba(199, 191, 180, 0.2));
+    height: 70vh;
+    position: absolute;
+    left: 53vw;
+    top: 23vh;
+    padding: 2rem;
+}
+
+.connect {
+    text-align: center;
+    font-size: larger;
+}
+
+.image > img {
+    width: 20rem;
+}

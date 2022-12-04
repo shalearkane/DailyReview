@@ -1,0 +1,77 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin-right: 0;
+    background: linear-gradient( rgba(0, 0, 0, 0.688), rgba(0, 0, 0, 0.688) ), url("images/Home.jpg");
+    background-size: cover;
+    background-position-y: 30%;
+    background-attachment: fixed;
+}
+
+nav {
+    background-color: rgba(223, 233, 237, 0.4); 
+    border-radius: 0.4rem; 
+    margin: 0.5rem; 
+    height: 3rem
+}
+
+.navbar-brand {
+    color:rgb(42, 41, 41); 
+    padding: 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+input, select {
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    padding: 5px;
+    background-color: transparent;
+    margin-left: 3px;
+}
+
+.d-flex > a {
+    background-color: rgb(110, 92, 62);
+    border-color: rgb(110, 92, 62);
+    position: relative;
+    top: 0.5rem;
+    height: 2rem;
+    padding-top: 0.2rem;
+    color: rgb(183, 182, 180);
+    box-shadow: 0px 0px 10px 1px rgb(130, 116, 75); 
+}
+
+.d-flex > a:hover {
+    background-color: rgb(42, 41, 41);
+    border-color: rgb(42, 41, 41);
+    color: rgb(183, 182, 180);
+    box-shadow: 0px 0px 10px 1px rgb(130, 116, 75); 
+}
+
+.btn-info {
+    --bs-btn-active-bg: rgb(21, 21, 21);
+    --bs-btn-active-border-color: rgb(21, 21, 21);
+    --bs-btn-active-color: rgb(183, 182, 180);
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 7px;
+  margin-right: 2px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  width: 0rem;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: grey; 
+  border-radius: 0.5rem;
+  margin-right: 2px
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
