@@ -12,7 +12,7 @@ from .models import Review
 class PersonalFeed(ListView):
     model = Review
     paginate_by: int = 10
-    template_name: str = "review/feed_personal.html"
+    template_name: str = "review/feed.html"
     context_object_name = "review_list"
 
     def get_queryset(self):
