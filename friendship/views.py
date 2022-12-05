@@ -32,7 +32,7 @@ def DiscoverFriendsView(request):
         strangers = (
             User.objects.all()
             .exclude(id__in=friend_ids_list)
-            .values("id", "username", "email")
+            .values("id", "username", "email", "first_name", "last_name")
         )
         response = json.dumps(list(strangers))
         return JsonResponse(response, safe=False)

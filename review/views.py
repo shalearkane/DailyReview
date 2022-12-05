@@ -37,6 +37,10 @@ class Write(CreateView):
             return redirect("edit-review", pk=review.pk)
         return super().get(request, *args, **kwargs)
 
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        form.save()
+        return super().form_valid(form)
 
 class Edit(UpdateView):
     model = Review

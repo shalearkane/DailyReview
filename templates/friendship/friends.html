@@ -10,17 +10,21 @@
         <div class="title-left">Your Friends</div>
         <div class="current-friends">
             <div class="grid-container">
-                {% for friend in friends_list %}
-                    <div class="card">
-                        <img src="{{ friend.to_user.socialaccount_set.all.0.get_avatar_url }}"
-                             class="card-img-top"
-                             alt="avatar">
-                        <div class="card-body">
-                            <h6 class="card-title">{{ friend.to_user.username }}</h6>
-                            <p class="card-text">{{ friend.to_user.email }}</p>
+                {% if friends_list %}
+                    {% for friend in friends_list %}
+                        <div class="card">
+                            <img src="{{ friend.to_user.socialaccount_set.all.0.get_avatar_url }}"
+                                class="card-img-top"
+                                alt="avatar">
+                            <div class="card-body">
+                                <h6 class="card-title">{{ friend.to_user.username }}</h6>
+                                <p class="card-text">{{ friend.to_user.email }}</p>
+                            </div>
                         </div>
-                    </div>
-                {% endfor %}
+                    {% endfor %}
+                {% else %}
+                    <p> blabla </p>
+                {% endif %}
             </div>
         </div>
         <div class="add-friend">
@@ -28,7 +32,7 @@
             <div id="mainDropDown" class="dropdown">
                 <input onclick="myFunction()"
                        type="text"
-                       placeholder="Search by Username or Email ID"
+                       placeholder="Search by Name or Username"
                        id="myInput"
                        onkeyup="filterFunction()">
                 <div id="myDropdown" class="dropdown-content"></div>
@@ -40,7 +44,7 @@
                     url: "{% url 'discover-friends' %}",
                     method: "GET",
                     success: function (data, status, xhr) {
-                        var $dropdown = $("#mainDropDown");
+                        var $dropdown = $("#myDropdown");
                         data = JSON.parse(data)
                         console.log("this is happening")
                         console.log(data)
@@ -48,8 +52,9 @@
                             $dropdown.append(
                                 `
                                 <div class="friend">
-                                    <div><p>${value.username}</p><p>${value.email}</p></div>
-                                    <div><form class="send-request" type="submit">Add Friend</form></div>
+                                    <div><img src="{%static 'images/sample_friend.jpg' %}"></div>
+                                    <div><p>${value.first_name} ${value.last_name}</p><p>@${value.username}</p></div>
+                                    <div><form><input type="submit" value="Add Friend" class="send-request"></form></div>
                                 </div>
                                 `
                             );

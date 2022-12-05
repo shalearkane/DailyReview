@@ -152,12 +152,12 @@
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #f6f6f6;
+    /* background-color: #f6f6f6; */
     min-width: 30.1rem;
     left: 2px;
     overflow-y: overlay;
     max-height: 22rem;
-    border: 1px solid #ddd;
+    /* border: 1px solid #ddd; */
     border-radius: 0 0 0.7rem 0.7rem;
     z-index: 1;
 }
@@ -179,18 +179,19 @@
 }
 
 .friend div p:first-child {
-    color: rgb(110, 89, 51);
+    color: rgb(255, 255, 255);
     display: block;
     margin: 0;
     margin-left:1rem;
-    font-weight: bold;
+    /* font-weight: bold; */
 }
 
 .friend div p:last-child {
-    color: rgb(152, 129, 85);
+    color: #ddd;
     display: block;
     margin: 0;
     margin-left:1rem;
+    font-size: 0.8rem
 }
 
 .friend div img {
@@ -200,7 +201,18 @@
     border: 2px solid #ddd;
 }
 
-.friend:hover {background-color: #ddd;}
+.friend:hover {
+    background-color: #ddd;
+}
+
+.friend:hover div p:first-child {
+    color: rgb(114, 92, 53);
+    font-weight: bold;
+}
+
+.friend:hover div p:last-child {
+    color: rgb(114, 92, 53)
+}
 
 .show {display: block;}
 
