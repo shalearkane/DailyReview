@@ -23,12 +23,13 @@
 
 .container {
     width: 80vw;
-    height: 70vh;
+    max-height: 70vh;
     background: rgba(74, 72, 69, 0.408);
     position: absolute;
     top: 22vh;
     margin-left: 10vw;
     overflow-y: overlay;
+    padding-bottom: 2rem;
 }
 
 .review {
@@ -39,7 +40,8 @@
     max-height: 10rem; */
     position: relative;
     /* top: 7rem */
-    margin-top: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     /* margin: 5rem; */
 }
 
@@ -119,6 +121,32 @@
     border: 1rem solid rgb(83, 62, 24);
 }
 
-/* .middle-line {
-    height:
-} */
+.middle-line {
+    width: 0.4rem;
+    background-color:rgb(55, 42, 19);
+    height: 100%;
+    position: absolute;
+    left: 30.5vw;
+    /* top: -2rem */
+}
+
+.rem-line {
+    width: 0.4rem;
+    background-color: rgb(55, 42, 19);
+    height: 0.8rem;
+    position: fixed;
+    top: 22vh;
+    left: 41.3vw
+}
+
+.semicircle {
+    width: 1.2rem;
+    height: 1rem;
+    border-top-left-radius: 10rem;
+    border-top-right-radius: 10rem;
+    left: 41.3vw;
+    position: fixed;
+    top: 9.7vw;
+    border-top: 0.2rem   solid rgb(55, 42, 19);
+    border-left: 0.4rem solid rgb(55, 42, 19);
+}
