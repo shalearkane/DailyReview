@@ -36,18 +36,3 @@
         </div>
     </body>
 {% endblock content %}
-{% comment %} {% extends "base.html" %}
-{% block content %}
-    <h1>Daily Reviews</h1>
-    {% if review_list %}
-        <ul>
-            {% for review in review_list %}
-                <li>
-                    <a href="{{ review.get_absolute_url }}">{{ review.title }}</a> ({{ review.date }})
-                </li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>No reviews yet</p>
-    {% endif %}
-{% endblock content %} {% endcomment %}
