@@ -7,37 +7,47 @@
     </head>
     <body>
         <div class="title">Friends Zone!!</div>
-        <div class="title-left">Your Friends</div>
-        <div class="current-friends">
-            <div class="grid-container">
-                {% if friends_list %}
-                    {% for friend in friends_list %}
-                        <div class="card">
-                            <img src="{{ friend.to_user.socialaccount_set.all.0.get_avatar_url }}"
-                                class="card-img-top"
-                                alt="avatar">
-                            <div class="card-body">
-                                <h6 class="card-title">{{ friend.to_user.username }}</h6>
-                                <p class="card-text">{{ friend.to_user.email }}</p>
+        {% if friends_list %}
+            <div class="title-left">Your Friends</div>
+            <div class="current-friends">
+                <div class="grid-container">
+                        {% for friend in friends_list %}
+                            <div class="card">
+                                <img src="{{ friend.to_user.socialaccount_set.all.0.get_avatar_url }}"
+                                    class="card-img-top"
+                                    alt="avatar">
+                                <div class="card-body">
+                                    <h6 class="card-title">{{ friend.to_user.username }}</h6>
+                                    <p class="card-text">{{ friend.to_user.email }}</p>
+                                </div>
                             </div>
-                        </div>
-                    {% endfor %}
-                {% else %}
-                    <p> blabla </p>
-                {% endif %}
+                        {% endfor %}
+                </div>
             </div>
-        </div>
-        <div class="add-friend">
-            <div id="connect" class="connect">Connect to someone you may know</div>
-            <div id="mainDropDown" class="dropdown">
-                <input onclick="myFunction()"
-                       type="text"
-                       placeholder="Search by Name or Username"
-                       id="myInput"
-                       onkeyup="filterFunction()">
-                <div id="myDropdown" class="dropdown-content"></div>
+            <div class="add-friend friend-no">
+                <div id="connect" class="connect">Connect to someone you may know</div>
+                <div id="mainDropDown" class="dropdown">
+                    <input onclick="myFunction()"
+                           type="text"
+                           placeholder="Search by Name or Username"
+                           id="myInput"
+                           onkeyup="filterFunction()">
+                    <div id="myDropdown" class="dropdown-content"></div>
+                </div>
             </div>
-        </div>
+        {% else %}
+            <div class="add-friend friend-yes">
+                <div id="connect" class="connect">Connect to someone you may know</div>
+                <div id="mainDropDown" class="dropdown">
+                    <input onclick="myFunction()"
+                        type="text"
+                        placeholder="Search by Name or Username"
+                        id="myInput"
+                        onkeyup="filterFunction()">
+                    <div id="myDropdown" class="dropdown-content"></div>
+                </div>
+            </div>
+        {% endif %}
         <script>
             $(document).ready(function() {
                 $.ajax({
@@ -54,7 +64,7 @@
                                 <div class="friend">
                                     <div><img src="{%static 'images/sample_friend.jpg' %}"></div>
                                     <div><p>${value.first_name} ${value.last_name}</p><p>@${value.username}</p></div>
-                                    <div><form><input type="submit" value="Add Friend" class="send-request"></form></div>
+                                    <div><button id="${value.username}" onclick="activate(this.id)" class="send-request">Add Friend</button></div>
                                 </div>
                                 `
                             );
@@ -69,9 +79,16 @@
             /* When the user clicks on the button,
             toggle between hiding and showing the dropdown content */
             function myFunction() {
-            document.getElementById("connect").classList.toggle("shift-connect");
-            document.getElementById("mainDropDown").classList.toggle("shift-dropdown");
-            document.getElementById("myDropdown").classList.toggle("show");
+                document.getElementById("connect").classList.toggle("shift-connect");
+                document.getElementById("mainDropDown").classList.toggle("shift-dropdown");
+                document.getElementById("myDropdown").classList.toggle("show");
+            }
+
+            function activate(id_name) {
+                document.getElementById(id_name).innerHTML = "Request Sent";
+                document.getElementById(id_name).classList.toggle("request-sent");
+                document.getElementById(id_name).setAttribute("disabled", "");
+                document.getElementById(id_name).classList.remove("send-request");
             }
         </script>
     </body>

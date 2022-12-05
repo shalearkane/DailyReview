@@ -88,10 +88,18 @@
     background: linear-gradient(rgba(199, 191, 180, 0.1), rgba(199, 191, 180, 0.2));
     height: 70vh;
     position: absolute;
-    left: 46vw;
     top: 23vh;
     padding: 2rem;
     align-items: center;
+}
+
+.friend-yes {
+    left: 30vw;
+    width: 37rem;;
+}
+
+.friend-no {
+    left: 46vw;
 }
 
 .connect {
@@ -219,24 +227,40 @@
 /*/////////////////*/
 
 .send-request {
-    background-color: rgb(152, 129, 85);
-    padding: 0.6rem 1.3rem;
+    background-color: transparent;
     margin-left: 2rem;
     margin-right: 1rem;
     align-content: center;
-    margin-top: 1rem;
+    width: 8rem;
+    height: 3rem;
     border-radius: 0.4rem;
-    color: #f6f6f6;
+    color: rgb(93, 71, 29);
     transition: 0.15s;
     transition-timing-function: ease-out;
+    border: 2px solid rgb(93, 71, 29)
 }
 
 .send-request:hover {
     background-color: rgb(93, 71, 29);
+    border: 2px solid rgb(93, 71, 29);
+    color: #ddd;
     transform: scale(1.02);
 }
 
 .send-request:active {
     background-color: rgb(56, 41, 13);
     transform: scale(1);
+}
+
+.request-sent {
+    padding: 0.6rem 0.3rem;
+    margin-left: 2rem;
+    margin-right: 1rem;
+    align-content: center;
+    width: 8rem;
+    border-radius: 0.4rem;
+    background-color: rgb(93, 71, 29);
+    border: 2px solid rgb(93, 71, 29);
+    color: #ddd;
+    transform: scale(1.02);
 }
