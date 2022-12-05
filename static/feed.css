@@ -77,27 +77,51 @@
 }
 
 .review-title {
+    perspective: 500px;
+    perspective-origin: left;
+}
+
+.rotate {
     background-color: rgb(83, 62, 24);
     width: 35rem;
     position: relative;
     left: 14vw;
     max-height: 10rem;
     overflow: hidden;
-    text-decoration: none;
     padding: 1.0rem;
     color: #ddd;
     transition: 0.3s;
     transition-timing-function: ease-out;
     box-shadow: 3px 3px 9px -3px rgb(43, 30, 3);
     border: 1rem solid rgb(83, 62, 24);
+    transform-origin: bottom left;
 }
 
-.review-title p:first-child {
+.rotate a {
+    text-decoration: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .rotate-animation {
+      animation: wipe-enter 2.5s 1;
+    }
+}
+
+@keyframes wipe-enter {
+    0% {
+        transform: rotate3d(0,1,0, 70deg);        
+    }
+    100% {
+        transform: rotate3d(0,1,0,0deg);
+    }
+}
+
+.rotate p:first-child {
     font-size: large;
     margin-bottom: 0;
 }
 
-.review-title p:nth-child(2) {
+.rotate p:nth-child(2) {
     text-align: justify;
     background-image: linear-gradient(#ddd, transparent);
     background-position-y: -3.1rem;
@@ -108,12 +132,12 @@
     margin-top: 1rem;
 }
 
-.review-title:hover {
+/* .review-title:hover {
     transform: scale(1.02);
     background-color: rgb(56, 41, 13);
     color: #ddd;
     border: 1rem solid rgb(56, 41, 13);
-}
+} */
 
 .review-title:active {
     background-color: rgb(83, 62, 24);
