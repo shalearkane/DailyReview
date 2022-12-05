@@ -1,4 +1,47 @@
 {% extends "base.html" %}
+{% load static %}
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'feed.css' %}">
+</head>
+<body>
+    <div class="title">Daily Reviews</div>
+        <div class="container">
+            <div class="reviews">
+                <div class="review">
+                    <div class="username-date">
+                        <div><img src="{% static 'images/sample_friend.jpg' %}"></div>
+                        <div><p>username</p><p>15 Dec 2100</p></div>
+                    </div>
+                    <a href="" class="review-title"><p>aaj ka gyaan</p><p>Ex irure reprehenderit id exercitation exercitation ullamco id. Aute qui nisi nostrud in consequat dolor culpa consequat anim et. Voluptate amet fugiat laboris in laborum incididunt adipisicing. Quis voluptate Lorem est sunt ex aliquip cupidatat elit enim. Velit officia sit tempor officia Lorem pariatur nulla laboris deserunt nisi irure Lorem id ex.</p></a>
+                </div>
+                <div class="review">
+                    <div class="username-date">
+                        <div><img src="{% static 'images/sample_friend.jpg' %}"></div>
+                        <div><p>username</p><p>15 Dec 2100</p></div>
+                    </div>
+                    <a href="" class="review-title"><p>aaj ka gyaan</p><p>Ex irure reprehenderit id exercitation exercitation ullamco id. Aute qui nisi nostrud in consequat dolor culpa consequat anim et. Voluptate amet fugiat laboris in laborum incididunt adipisicing. Quis voluptate Lorem est sunt ex aliquip cupidatat elit enim. Velit officia sit tempor officia Lorem pariatur nulla laboris deserunt nisi irure Lorem id ex.</p></a>
+                </div>
+                <div class="review">
+                    <div class="username-date">
+                        <div><img src="{% static 'images/sample_friend.jpg' %}"></div>
+                        <div><p>username</p><p>15 Dec 2100</p></div>
+                    </div>
+                    <a href="" class="review-title"><p>Aaj ka gyaan</p></a>
+                </div>
+                <div class="review">
+                    <div class="username-date">
+                        <div><img src="{% static 'images/sample_friend.jpg' %}"></div>
+                        <div><p>username</p><p>15 Dec 2100</p></div>
+                    </div>
+                    <a href="" class="review-title"><p>aaj ka gyaan</p><p>Ex irure reprehenderit id exercitation exercitation ullamco id. Aute qui nisi nostrud in consequat dolor culpa consequat anim et. Voluptate amet fugiat laboris in laborum incididunt adipisicing. Quis voluptate Lorem est sunt ex aliquip cupidatat elit enim. Velit officia sit tempor officia Lorem pariatur nulla laboris deserunt nisi irure Lorem id ex.</p></a>
+                </div>
+            </div>
+        </div>
+</body>
+{% endblock content %}
+
+{% comment %} {% extends "base.html" %}
 {% block content %}
     <h1>Daily Reviews</h1>
     {% if review_list %}
@@ -10,6 +53,6 @@
             {% endfor %}
         </ul>
     {% else %}
-        <p>You've yet to write a review</p>
+        <p>No reviews yet</p>
     {% endif %}
-{% endblock content %}
+{% endblock content %} {% endcomment %}
