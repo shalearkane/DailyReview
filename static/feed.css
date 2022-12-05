@@ -82,26 +82,41 @@
     max-height: 10rem;
     overflow: hidden;
     text-decoration: none;
-    padding: 1rem;
+    padding: 1.0rem;
     color: #ddd;
     transition: 0.3s;
     transition-timing-function: ease-out;
     box-shadow: 3px 3px 9px -3px rgb(43, 30, 3);
+    border: 1rem solid rgb(83, 62, 24);
 }
 
-.review-title p:last-child {
+.review-title p:first-child {
+    font-size: large;
+    margin-bottom: 0;
+}
+
+.review-title p:nth-child(2) {
     text-align: justify;
+    background-image: linear-gradient(#ddd, transparent);
+    background-position-y: -3.1rem;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    -moz-text-fill-color: transparent;
+    margin-top: 1rem;
 }
 
 .review-title:hover {
     transform: scale(1.02);
     background-color: rgb(56, 41, 13);
     color: #ddd;
+    border: 1rem solid rgb(56, 41, 13);
 }
 
 .review-title:active {
     background-color: rgb(83, 62, 24);
     transform: scale(1);
+    border: 1rem solid rgb(83, 62, 24);
 }
 
 /* .middle-line {
