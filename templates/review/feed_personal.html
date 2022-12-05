@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <head>
+        <link rel="stylesheet" href="{% static 'feed.css' %}">
+    </head>
+    <body>
+        <div class="title">Daily Reviews</div>
+        {% if review_list %}
+            <div class="container">
+                <div class="reviews">
+                    <div class="semicircle"></div>
+                    {% for review in review_list %}
+                        <div class="review">
+                            <div class="username-date" style="">
+                                <div><p style="font-size: 1.2rem; color: rgb(183, 182, 180); text-align:right">{{ review.date }}</p></div>
+                            </div>
+                            <div class="middle-line"></div>
+                            <a href="{{ review.get_absolute_url }}" class="review-title">
+                                <div class="inner">
+                                    <div class="rotate">
+                                        <p>{{ review.title }}</p><p>{{ review.text }}</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% else %}
+            <div class="no-review">You have yet to write a review</div>
+        {% endif %}
+
+    <script>
+        const observer = new IntersectionObserver(entries => {
+            // Loop over the entries
+            entries.forEach(entry => {
+              // If the element is visible
+              if (entry.isIntersecting) {
+                // Add the animation class
+                entry.target.classList.add('rotate-animation');
+                return;
+              }
+              entry.target.classList.remove('rotate-animation');
+            });
+          });
+          
+        const boxlist = document.querySelectorAll('.rotate');
+          boxlist.forEach((el) => {
+            observer.observe(el);
+        })
+    </script>
+</body>
+{% endblock content %}
