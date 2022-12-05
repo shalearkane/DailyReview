@@ -1,0 +1,103 @@
+.title {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    margin-top: 5vh;
+    font-size: 1.8rem;
+    color: rgb(212, 220, 226);
+    animation: title 1s;
+    animation-timing-function: ease-out;
+    animation-iteration-count: 2;
+    animation-direction: alternate;
+    text-shadow: 2px 2px 8px black;
+}
+
+@keyframes title {
+    0% {color: rgb(212, 220, 226);
+          font-size: 1.8rem;}
+    100% {color: aliceblue;
+        font-size: 1.9rem;}
+}
+
+.container {
+    width: 80vw;
+    height: 70vh;
+    background: rgba(74, 72, 69, 0.408);
+    position: absolute;
+    top: 22vh;
+    margin-left: 10vw;
+    overflow-y: overlay;
+}
+
+.review {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* min-height: 10rem;
+    max-height: 10rem; */
+    position: relative;
+    /* top: 7rem */
+    margin-top: 2rem;
+    /* margin: 5rem; */
+}
+
+.username-date {
+    /* background-color: black; */
+    width: 18rem;
+    position: relative;
+    left: 10vw;
+    height: 4rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.7rem;
+    border-bottom: 2px solid #ddd;
+    border-right: 2px solid #ddd;
+}
+
+.username-date div img {
+    width: 2.5rem;
+    border-radius: 10rem;
+    float: left;
+    margin-top: 0.2rem;
+    margin-right: 1rem;
+}
+
+.username-date div p:first-child {
+    margin-bottom: 0;
+    color: rgb(255, 255, 255);
+}
+
+.username-date div p:last-child {
+    color: #ddd;
+    font-size: 0.8rem;
+}
+
+.review-title {
+    background-color: rgb(83, 62, 24);
+    width: 30rem;
+    position: relative;
+    left: 14vw;
+    max-height: 10rem;
+    overflow: hidden;
+    text-decoration: none;
+    padding: 1rem;
+    color: #ddd;
+    transition: 0.3s;
+    transition-timing-function: ease-out;
+}
+
+.review-title p:last-child {
+    text-align: justify;
+}
+
+.review-title:hover {
+    transform: scale(1.02);
+    background-color: rgb(56, 41, 13);
+    color: #ddd;
+}
+
+.review-title:active {
+    background-color: rgb(83, 62, 24);
+    transform: scale(1);
+}
