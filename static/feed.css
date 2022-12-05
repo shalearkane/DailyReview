@@ -51,8 +51,9 @@
     height: 4rem;
     padding: 0.5rem 1rem;
     border-radius: 0.7rem;
-    border-bottom: 2px solid #ddd;
-    border-right: 2px solid #ddd;
+    /* border-bottom: 2px solid #ddd;
+    border-right: 2px solid #ddd; */
+    box-shadow: 3px 3px 9px -3px black;
 }
 
 .username-date div img {
@@ -75,7 +76,7 @@
 
 .review-title {
     background-color: rgb(83, 62, 24);
-    width: 30rem;
+    width: 35rem;
     position: relative;
     left: 14vw;
     max-height: 10rem;
@@ -85,6 +86,7 @@
     color: #ddd;
     transition: 0.3s;
     transition-timing-function: ease-out;
+    box-shadow: 3px 3px 9px -3px rgb(43, 30, 3);
 }
 
 .review-title p:last-child {
@@ -101,3 +103,7 @@
     background-color: rgb(83, 62, 24);
     transform: scale(1);
 }
+
+/* .middle-line {
+    height:
+} */
