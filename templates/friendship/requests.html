@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% load static %}
+{% load socialaccount %}
+{% block content %}
+    {% for request in friend_requests %}{{ request.from_user.username }}{% endfor %}
+{% endblock content %}

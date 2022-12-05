@@ -1,8 +1,9 @@
 import json
+from http import HTTPStatus
 
 from django.contrib.auth.models import User
-from django.http import JsonResponse
-from django.shortcuts import render
+from django.http import HttpResponse, JsonResponse
+from django.shortcuts import get_object_or_404
 from django.views.generic.list import ListView
 
 from .models import Friendship, FriendshipRequests
@@ -38,14 +39,42 @@ def DiscoverFriendsView(request):
         return JsonResponse(response, safe=False)
 
 
-class FriendshipRequestsView(ListView):
+class FriendRequestsView(ListView):
     model = FriendshipRequests
     template_name: str = "friendship/requests.html"
-    context_object_name = "friendship_requests"
+    context_object_name = "friend_requests"
 
     def get_queryset(self):
-        queryset = Friendship.objects.filter(
+        queryset = FriendshipRequests.objects.filter(
             to_user=self.request.user, rejected=False
         ).order_by("-created")
 
         return queryset
+
+
+def SendFriendshipRequestView(request, user_id):
+    if request.method == "GET":
+        recipient = User.objects.get(id=user_id)
+        fr, created = FriendshipRequests.objects.get_or_create(
+            from_user=request.user, to_user=recipient
+        )
+        if not created:
+            return HttpResponse(status=HTTPStatus.ALREADY_REPORTED)
+        return HttpResponse(status=HTTPStatus.ACCEPTED)
+
+
+def ProcessFriendRequestView(request, pk):
+    if request.method == "POST":
+        fr: FriendshipRequests = FriendshipRequests.objects.get(pk=pk)
+        Friendship.objects.get_or_create(from_user=fr.from_user, to_user=fr.to_user)
+        Friendship.objects.get_or_create(from_user=fr.to_user, to_user=fr.from_user)
+        fr.accepted = True
+        fr.save()
+
+        return HttpResponse(status=HTTPStatus.ACCEPTED)
+
+    if request.method == "PATCH":
+        fr: FriendshipRequests = get_object_or_404(FriendshipRequests, pk=pk)
+        fr.rejected = True
+        fr.save()
+        return HttpResponse(status=HTTPStatus.ACCEPTED)
