@@ -1,6 +1,30 @@
 {% extends "base.html" %}
+{% load static %}
 {% block content %}
-    {{ review.title }}
-    {{ review.text }}
-    {{ review.date }}
+<head>
+    <link rel="stylesheet" href="{% static 'details.css' %}">
+</head>
+<body>
+        <div class="img-user-date">
+            <div class="image">
+                <img src="{% static 'images/sample_friend.jpg' %}" alt="">
+            </div>
+            <div class="name-username">
+                <p class="name">Somya Bansal</p>
+                <p class="username">@somib</p>
+            </div>
+            <div class="datedon-date">
+                <p class="datedon">Written on</p>
+                <p class="date">{{ review.date }}</p>
+            </div>
+        </div>
+        <div class="title-review">
+            <div class="title">{{ review.title }}</div>
+            <div class="review">{{ review.text }}</div>
+        </div>
+        <div class="edit-delete">
+            <button id="edit-button" onclick="activate(this.id)" class="button">Edit Review</button>
+            <button id="delete-button" onclick="activate(this.id)" class="button">Delete Review</button>
+        </div>
+</body>
 {% endblock content %}

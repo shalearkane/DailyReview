@@ -1,0 +1,142 @@
+.container {
+    width: 80vw;
+    max-height: 70vh;
+    background: rgba(74, 72, 69, 0.408);
+    position: absolute;
+    top: 22vh;
+    margin-left: 10vw;
+    overflow-y: overlay;
+    padding-bottom: 2rem;
+}
+
+.img-user-date {
+    margin: 3rem 5rem 0rem 5rem;
+    /* background-color: black; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.image img{
+    width: 3rem;
+    margin: 1rem;
+    margin-left: 1.3rem;
+    border-radius: 10rem;
+    border: 2px solid rgba(249, 245, 228, 0.938);
+}
+
+.name-username {
+    /* margin-to: 1rem; */
+    margin-right: auto;
+    align-content: center;
+    
+}
+
+.name {
+    margin-bottom: 0;
+    font-size: 1.2rem;
+    color:rgba(237, 232, 223, 0.801)
+}
+
+.username {
+    margin-bottom: 0;
+    font-size: 0.8rem;
+    color:rgba(241, 222, 200, 0.4)
+}
+
+.datedon-date {
+    text-align: right;
+    margin: 1rem;
+}
+
+.datedon {
+    margin-bottom: 0;
+    /* font-size: 0.8rem; */
+    color:rgba(241, 222, 200, 0.4)
+}
+
+.date {
+    margin-bottom: 0;
+    font-size: 1.2rem;
+    color:rgba(237, 232, 223, 0.801)
+}
+
+.title-review {
+    display: flex;
+    flex-direction: column;
+    margin: 0rem 6rem;
+}
+
+.title {
+    background-color: rgba(199, 191, 180, 0.1);
+    text-align: center;
+    padding: 0.5rem;
+    font-size: 1.3rem;
+    color: rgb(248, 241, 231);
+}
+
+.review {
+    margin-top: 0.5rem;
+    max-height: 22rem;
+    overflow-y: overlay;
+    padding: 2rem 3rem;
+    text-align: justify;
+    background-color: rgba(199, 191, 180, 0.1);
+    color:rgb(239, 223, 200);
+    line-height: 1.8rem;
+}
+
+.edit-delete {
+    /* background-color: black; */
+    margin: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.button {
+    padding: 0.3rem 1.0rem;
+    border-radius: 0.8rem;
+    margin: 0rem 0.5rem;
+    border: 0px;
+}
+
+#edit-button {
+    background-color: transparent;
+    color: rgb(167, 147, 111);
+    font-size: 1.2rem;
+    border: 3px solid rgb(130, 109, 73);
+    transition: 0.15s ease-out;
+}
+
+#delete-button {
+    background-color: transparent;
+    font-size: 1.2rem;
+    color: rgb(196, 51, 22);
+    border: 3px solid rgb(151, 28, 4);
+    transition: 0.15s ease-out;
+}
+
+#edit-button:hover {
+    transform: scale(1.02);
+    background-color: rgb(130, 109, 73);
+    color: #ddd;
+}
+
+#delete-button:hover {
+    transform: scale(1.02);
+    background-color: rgb(151, 28, 4);
+    color: #ddd;
+}
+
+#edit-button:active {
+    transform: scale(1);
+    background-color: rgb(107, 87, 52);
+    /* border: 3px solid rgb(101, 87, 52); */
+}
+
+#delete-button:active {
+    transform: scale(1);
+    background-color: rgb(104, 19, 2);
+    /* border: 3px solid rgb(104, 19, 2);    */
+}
