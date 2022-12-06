@@ -12,11 +12,22 @@ from .models import Review
 class PersonalFeed(ListView):
     model = Review
     paginate_by: int = 10
-    template_name: str = "review/feed.html"
+    template_name: str = "review/feed_personal.html"
     context_object_name = "review_list"
 
     def get_queryset(self):
         queryset = Review.objects.filter(user=self.request.user).order_by("-date")
+        return queryset
+
+
+class PublicFeed(ListView):
+    model = Review
+    paginate_by: int = 10
+    template_name: str = "review/feed.html"
+    context_object_name = "review_list"
+
+    def get_queryset(self):
+        queryset = Review.objects.filter(published=True).order_by("-date")
         return queryset
 
 
@@ -41,6 +52,7 @@ class Write(CreateView):
         form.instance.user = self.request.user
         form.save()
         return super().form_valid(form)
+
 
 class Edit(UpdateView):
     model = Review
