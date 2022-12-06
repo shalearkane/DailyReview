@@ -142,11 +142,11 @@ body {
 
 .title-review button {
     transform: rotateZ(90deg);
-    right: 93.5vw
+    margin-left: 95.9vw
 }
 
 .personal-thoughts button {
-    right: 94.22vw;
+    margin-left: -8.5vw;
     transform: rotateZ(-90deg);
 }
 

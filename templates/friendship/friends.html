@@ -6,48 +6,44 @@
         <link rel="stylesheet" href="{% static 'friends.css' %}">
     </head>
     <body>
-        <div class="title">Friends Zone!!</div>
-        {% if friends_list %}
-            <div class="title-left">Your Friends</div>
-            <div class="current-friends">
-                <div class="grid-container">
-                        {% for friend in friends_list %}
-                            <div class="card">
-                                <img src="{{ friend.to_user.socialaccount_set.all.0.get_avatar_url }}"
-                                    class="card-img-top"
-                                    alt="avatar">
-                                <div class="card-body">
-                                    <h6 class="card-title">{{ friend.to_user.username }}</h6>
-                                    <p class="card-text">{{ friend.to_user.email }}</p>
-                                </div>
+        <div class="container">
+            <div class="item1">Friends Zone!!</div>
+            <div class="item2">
+                {% if friends_list %}
+                    <div class="left">
+                        <div class="top">Your Friends</div>
+                        <div class="bottom">
+                            <div class="grid">
+                                {% for friend in friends_list %}
+                                    <div class="card">
+                                        <img src="{{ friend.to_user.socialaccount_set.all.0.get_avatar_url }}"
+                                            class="card-img-top"
+                                            alt="avatar">
+                                        <div class="card-body">
+                                            <p class="card-title">{{ friend.to_user.first_name }} {{ friend.to_user.last_name }}</p>
+                                            <p class="card-text">@{{ friend.to_user.username }}</p>
+                                        </div>
+                                    </div>    
+                                {% endfor %}                   
                             </div>
-                        {% endfor %}
-                </div>
+                        </div>
+                    </div>
+                {% endif %}
+                    <div class="right">
+                        <div class="one" id="connect">Connect to someone you may know</div>
+                        <div class="two">
+                            <div class="dropdown" id="mainDropDown">
+                                <input onclick="myFunction()"
+                                       type="text"
+                                       placeholder="Search by Name or Username"
+                                       id="myInput"
+                                       onkeyup="filterFunction()">
+                                <div id="myDropdown" class="dropdown-content"></div>
+                            </div>
+                        </div>
+                    </div>
             </div>
-            <div class="add-friend friend-no">
-                <div id="connect" class="connect">Connect to someone you may know</div>
-                <div id="mainDropDown" class="dropdown">
-                    <input onclick="myFunction()"
-                           type="text"
-                           placeholder="Search by Name or Username"
-                           id="myInput"
-                           onkeyup="filterFunction()">
-                    <div id="myDropdown" class="dropdown-content"></div>
-                </div>
-            </div>
-        {% else %}
-            <div class="add-friend friend-yes">
-                <div id="connect" class="connect">Connect to someone you may know</div>
-                <div id="mainDropDown" class="dropdown">
-                    <input onclick="myFunction()"
-                        type="text"
-                        placeholder="Search by Name or Username"
-                        id="myInput"
-                        onkeyup="filterFunction()">
-                    <div id="myDropdown" class="dropdown-content"></div>
-                </div>
-            </div>
-        {% endif %}
+        </div>
         <script>
             $(document).ready(function() {
                 $.ajax({
@@ -66,6 +62,7 @@
                                     <div><p>${value.first_name} ${value.last_name}</p><p>@${value.username}</p></div>
                                     <div><button id="${value.username}" onclick="activate(this.id)" class="send-request">Add Friend</button></div>
                                 </div>
+                                
                                 `
                             );
                         });
@@ -76,8 +73,6 @@
                 });
             })
 
-            /* When the user clicks on the button,
-            toggle between hiding and showing the dropdown content */
             function myFunction() {
                 document.getElementById("connect").classList.toggle("shift-connect");
                 document.getElementById("mainDropDown").classList.toggle("shift-dropdown");

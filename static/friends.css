@@ -1,17 +1,16 @@
-.title {
+.container {
     display: flex;
-    text-align: center;
     flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    margin-top: 5vh;
+}
+
+.item1 {
+    align-self: center;
     font-size: 1.8rem;
     color: rgb(212, 220, 226);
-    animation: title 1s;
-    animation-timing-function: ease-out;
-    animation-iteration-count: 2;
-    animation-direction: alternate;
+    animation: title 1s ease-out 0s 2 alternate;
     text-shadow: 2px 2px 8px black;
+    height: 15vh;
+    line-height: 15vh;
 }
 
 @keyframes title {
@@ -21,9 +20,40 @@
         font-size: 1.9rem;}
 }
 
-.card-title {
-    line-height: 0.4rem;
-    color: white;
+.item2 {
+    display: flex;
+    flex-direction: row;
+    height: 70vh;
+    justify-content: center;
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+    margin-right: 1vh;
+}
+
+.top {
+    background: linear-gradient(rgba(199, 191, 180, 0.1), rgba(199, 191, 180, 0.2));
+    color: rgb(226, 226, 226);
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-align: center;
+    line-height: 3rem;
+}
+
+
+.bottom {
+    background: linear-gradient(rgba(199, 191, 180, 0.1), rgba(199, 191, 180, 0.2));
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-top: 1vh;
+    flex: 1;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: auto auto;
 }
 
 .card {
@@ -32,8 +62,6 @@
     width: 13rem;
     align-items: center;
     padding-top: 1.2rem;
-    overflow-y: overlay;
-    overflow-x: hidden;
 }
 
 .card-img-top {
@@ -41,97 +69,44 @@
     width: 9rem;
 }
 
+.card-title {
+    line-height: 0.4rem;
+    color: white;
+}
+
 .card-text {
     font-size: 0.8rem;
     color: rgb(183, 182, 180);
 }
 
-.current-friends {
-    height: 63vh;
-    position: absolute;
-    left: 18vw;
-    top: 30vh;
-    background: linear-gradient(rgba(199, 191, 180, 0.1), rgba(199, 191, 180, 0.2));
-    overflow-y: auto;
-    overflow-x: hidden;
-}
-
-.title-left {
-    background: linear-gradient(rgba(199, 191, 180, 0.1), rgba(199, 191, 180, 0.2));
-    text-align: center;
+.right {
     display: flex;
     flex-direction: column;
-    align-content: center;
+    background: linear-gradient(rgba(199, 191, 180, 0.1), rgba(199, 191, 180, 0.2));
     justify-content: center;
-    height: 3rem;
-    position: absolute;
-    top: 23vh;
-    left: 18vw;
-    width: 26.4rem;
-    color: rgb(226, 226, 226);
-    font-size: 1.2rem;
-    font-weight: 500;
-}
-
-.grid-container {
-    display: grid;
-    grid-template-columns: auto auto;
-}
-
-.card-body {
-    width: 10rem;
-}
-
-.add-friend {
-    display: flex;
-    flex-direction: column;
-    background: linear-gradient(rgba(199, 191, 180, 0.1), rgba(199, 191, 180, 0.2));
-    height: 70vh;
-    position: absolute;
-    top: 23vh;
-    padding: 2rem;
     align-items: center;
 }
 
-.friend-yes {
-    left: 30vw;
-    width: 37rem;;
-}
-
-.friend-no {
-    left: 46vw;
-}
-
-.connect {
-    text-align: center;
+.one {
     font-size: 2rem;
     color: rgb(226, 226, 226);
-    margin-top: 7rem;
     width: 25rem;
-    transition: 0.3s;
-    transition-timing-function: ease-out;
+    text-align: center;
 }
 
-.shift-connect {
-    transform: translateY(-8rem);
-    width: 25rem;
-    font-size: 1.2rem
+.two {
+    
 }
 
-.image > img {
-    width: 20rem;
+.dropdown {
+    margin: 1rem 4rem;
+    /* transition: 0.3s;
+    transition-timing-function: ease-out; */
 }
-
-
-
-/*///////////////////////*/
 
 #myInput {
-    /* box-sizing: border-box; */
-    background-image: url('images/searchicon.png');
-    background-position: 14px 16px;
+    background: url('images/searchicon.png') 0.8rem center no-repeat;
     background-size: 1.2rem;
-    background-repeat: no-repeat;
     font-size: 16px;
     padding: 14px 20px 12px 45px;
     border: none;
@@ -145,34 +120,15 @@
     border-bottom: none;
 }
 
-.dropdown {
-    position: relative;
-    display: inline-block;
-    margin-top: 1rem;
-    transition: 0.3s;
-    transition-timing-function: ease-out;
-}
-
-.shift-dropdown {
-    transform: translateY(-7.5rem);
-}
-
 .dropdown-content {
     display: none;
-    position: absolute;
-    /* background-color: #f6f6f6; */
-    min-width: 30.1rem;
-    left: 2px;
+    /* left: 2px; */
     overflow-y: overlay;
     max-height: 22rem;
-    /* border: 1px solid #ddd; */
     border-radius: 0 0 0.7rem 0.7rem;
-    z-index: 1;
 }
 
 .friend {
-    position: relative;
-    top: 0;
     text-decoration: none;
     display: flex;
     flex-direction: row;
@@ -181,14 +137,21 @@
     border-bottom: 1px solid #ddd;
 }
 
+.friend div img {
+    width: 5rem;
+    /* float: left; */
+    border-radius: 10rem;
+    border: 2px solid #ddd;
+}
+
 .friend div:nth-child(2) {
-    width: 13.5rem;
+    width: 13rem;
     overflow: hidden;
 }
 
 .friend div p:first-child {
     color: rgb(255, 255, 255);
-    display: block;
+    /* display: block; */
     margin: 0;
     margin-left:1rem;
     /* font-weight: bold; */
@@ -196,17 +159,10 @@
 
 .friend div p:last-child {
     color: #ddd;
-    display: block;
+    /* display: block; */
     margin: 0;
     margin-left:1rem;
-    font-size: 0.8rem
-}
-
-.friend div img {
-    width: 5rem;
-    float: left;
-    border-radius: 10rem;
-    border: 2px solid #ddd;
+    font-size: 0.8rem;
 }
 
 .friend:hover {
@@ -222,10 +178,6 @@
     color: rgb(114, 92, 53)
 }
 
-.show {display: block;}
-
-/*/////////////////*/
-
 .send-request {
     background-color: transparent;
     margin-left: 2rem;
@@ -235,9 +187,10 @@
     height: 3rem;
     border-radius: 0.4rem;
     color: rgb(93, 71, 29);
+    border: 2px solid rgb(93, 71, 29);
     transition: 0.15s;
     transition-timing-function: ease-out;
-    border: 2px solid rgb(93, 71, 29)
+    
 }
 
 .send-request:hover {
@@ -252,6 +205,8 @@
     transform: scale(1);
 }
 
+.show {display: block;}
+
 .request-sent {
     padding: 0.6rem 0.3rem;
     margin-left: 2rem;
@@ -263,4 +218,17 @@
     border: 2px solid rgb(93, 71, 29);
     color: #ddd;
     transform: scale(1.02);
+}
+
+.shift-connect {
+    display: none;
+}
+
+.shift-dropdown {
+    animation: up 1s ease-out;
+}
+
+@keyframes up {
+    from {transform: translateY(10rem);}
+    top {transform: translateY(0rem);}
 }
