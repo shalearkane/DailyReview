@@ -77,15 +77,20 @@
 }
 
 .review-title {
-    perspective: 500px;
-    perspective-origin: left;
+    text-decoration: none;
+    position: relative;
+    left: 14vw;
+}
+
+.inner {
+    /* perspective-origin: left; */
+    perspective: 200px;
 }
 
 .rotate {
+    /* transform: rotateY(-90deg); */
     background-color: rgb(83, 62, 24);
     width: 35rem;
-    position: relative;
-    left: 14vw;
     max-height: 10rem;
     overflow: hidden;
     padding: 1.0rem;
@@ -94,26 +99,18 @@
     transition-timing-function: ease-out;
     box-shadow: 3px 3px 9px -3px rgb(43, 30, 3);
     border: 1rem solid rgb(83, 62, 24);
-    transform-origin: bottom left;
-}
-
-.rotate a {
-    text-decoration: none;
+    transform-origin: left bottom;
 }
 
 @media (prefers-reduced-motion: no-preference) {
     .rotate-animation {
-      animation: wipe-enter 2.5s 1;
+        animation: wipe 0.8s 1;
     }
 }
 
-@keyframes wipe-enter {
-    0% {
-        transform: rotate3d(0,1,0, 70deg);        
-    }
-    100% {
-        transform: rotate3d(0,1,0,0deg);
-    }
+@keyframes wipe {
+    from {transform: rotateY(90deg);}
+    to {transform: rotateY(0deg);}
 }
 
 .rotate p:first-child {
@@ -132,14 +129,14 @@
     margin-top: 1rem;
 }
 
-/* .review-title:hover {
+.review-title:hover .rotate{
     transform: scale(1.02);
     background-color: rgb(56, 41, 13);
     color: #ddd;
     border: 1rem solid rgb(56, 41, 13);
 } */
 
-.review-title:active {
+.review-title:active .rotate{
     background-color: rgb(83, 62, 24);
     transform: scale(1);
     border: 1rem solid rgb(83, 62, 24);
@@ -173,4 +170,24 @@
     top: 9.7vw;
     border-top: 0.2rem   solid rgb(55, 42, 19);
     border-left: 0.4rem solid rgb(55, 42, 19);
+}
+
+.no-review {
+    color: rgb(183, 182, 180);
+    font-size: xx-large;
+    text-align: center;
+    /* position: absolute; */
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+    /* position: fixed; */
+    margin-top: 30vh;
+    /* left: 40vw; */
+    animation: down 1s;
+}
+
+@keyframes down {
+    from {margin-top:20vh;}
+    to {margin-top: 30vh}
 }

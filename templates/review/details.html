@@ -1,6 +1,54 @@
 {% extends "base.html" %}
+{% load static %}
 {% block content %}
-    {{ review.title }}
-    {{ review.text }}
-    {{ review.date }}
+<head>
+    <link rel="stylesheet" href="{% static 'details.css' %}">
+</head>
+<body>
+        <div class="img-user-date">
+            <div class="image">
+                <img src="{% static 'images/sample_friend.jpg' %}" alt="">
+            </div>
+            <div class="name-username">
+                <p class="name">Somya Bansal</p>
+                <p class="username">@somib</p>
+            </div>
+            <div class="datedon-date">
+                <p class="datedon">Written on</p>
+                <p class="date">{{ review.date }}</p>
+            </div>
+        </div>
+        <div class="review-thought" id="review-thought">
+            <div class="title-review">
+                <div class="title">Aaj ka gyan</div>
+                <div class="review">it officia minim enim pariatur. Aute voluptate magna ut qui exercitation nulla.Exercitation laboris sit esse anim. Commodo ad sint enim reprehenderit nostrud ullamco do fugiat incididunt laboris dolor et irure incididunt. Do consequat laborum tempor et nostrud cillum tempor ex adipisicing id.Minim deserunt sint cillum est irure aliquip commodo nisi minim esse. Tempor quis esse exercitation aliqua eu dolor velit ad. Fugiat do non quis anim ut irure ea ullamco sunt officia do do quis. Laboris laborum labore aliqua anim velit pariatur exercitation cillum. Eiusmod sit exercitation dolor excepteur aute officia duis est mollit aute ut do consectetur. Non sint laboris ea voluptate.Nulla ullamco enim voluptate incididunt veniam ut. Pariatur sit occaecat quis laborum reprehenderit consequat ut ut tempor irure laboris veniam irure fugiat. Occaecat occaecat nulla culpa velit reprehenderit laborum aute. Magna aliqua aliqua sit pariatur voluptate pariatur Lorem veniam. Aliqua velit occaecat in sint tempor nulla.Sint aliqua ad amet ullamco irure consequat minim qui pariatur. Commodo ad nulla id pariatur proident nulla dolore consequat laboris. Consectetur nulla qui incididunt commodo voluptate sint sit dolor nostrud et. Incididunt amet cupidatat duis excepteur anim do.Irure et eu irure officia ullamco est ullamco do labore. Aute deserunt labore laboris et ad eiusmod ad duis ullamco sint dolor. Reprehenderit amet dolore excepteur magna duis.</div>
+                <button onclick="slide1()">View Review</button>
+            </div>
+            <div class="personal-thoughts">
+                <div>Personal Thoughts</div>
+                <div>
+                    Eu minim nisi magna nIpsum eu incididunt cillum irure elit velit exercitation occaecat reprehenderit veniam. Do adipisicing laboris dolor exercitation sint aliquip et ut. Consequat reprehenderit mollit qui est minim incididunt in elit. Elit exercitation aute ea eiusmod irure. Duis nisi deserunt laboris reprehenderit qui magna ut. Lorem ad deserunt aliqua et pariatur pariatur eiusmod non nulla labore cillum anim consequat id labore. Adipisicing elit irure laboris adipisicing exercitation deserunt laborum. Amet occaecat ex adipisicing ea fugiat veniam deserunt nulla consectetur. Dolor ipsum ipsum adipisicing laboris id id do irure quis ad et dolor anim consequat. Irure amculpa ullamco ex sint. Ad enim nulla aliquip id dolore excepteur pariatur consequat consectetur cillum. Ex nisi ut aute consectetur quis laboris aliquip sit consectetur fugiat consequat reprehenderit officia esse. Aliquip exercitation exercitation occaecat sint officia laboris ipsum excepteur pariatur. Labore ex enim ut et ea. Culpa nostrud aute voluptate excepteur ex ipsum eu mollit veniam laboris ut. velit eiusmod. Consequat incididunt minim enim laborum.
+                </div>
+                <button onclick="slide2()">Personal Thoughts</button>
+            </div>
+        </div>    
+        <div class="edit-delete">
+            <button id="edit-button" onclick="activate(this.id)" class="button">Edit Review</button>
+            <button id="delete-button" onclick="activate(this.id)" class="button">Delete Review</button>
+        </div>
+
+
+
+        <script>
+            function slide1() {
+                document.getElementById("review-thought").classList.remove("slide2");
+                document.getElementById("review-thought").classList.toggle("slide1");
+            }
+
+            function slide2() {
+                document.getElementById("review-thought").classList.remove("slide1");
+                document.getElementById("review-thought").classList.toggle("slide2");
+            }
+        </script>
+</body>
 {% endblock content %}

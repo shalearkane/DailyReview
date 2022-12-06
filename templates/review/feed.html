@@ -5,34 +5,51 @@
         <link rel="stylesheet" href="{% static 'feed.css' %}">
     </head>
     <body>
-        <div class="semicircle"></div>
         <div class="title">Daily Reviews</div>
-        <div class="container">
-            <div class="reviews">
-                <div class="review">
-                    <div class="rem-line"></div>
-                    <div class="username-date">
-                        <div><img src="{% static 'images/sample_friend.jpg' %}"></div>
-                        <div><p>username</p><p>15 Dec 2100</p></div>
-                    </div>
-                    <div class="middle-line"></div>
-                    <a href="">
-                        <div class="review-title">
-                            <div class="rotate rotate-animation"><p>aaj ka gyaan</p><p>Ex irure reprehenderit id exercitation exercitation ullamco id. Aute qui nisi nostrud in consequat dolor culpa consequat anim et. Voluptate amet fugiat laboris in laborum incididunt adipisicing. Quis voluptate Lorem est sunt ex aliquip cupidatat elit enim. Velit officia sit tempor officia Lorem pariatur nulla laboris deserunt nisi irure Lorem id ex.</p></div>
+        {% if review_list %}
+            <div class="container">
+                <div class="reviews">
+                    <div class="semicircle"></div>
+                    {% for review in review_list %}
+                        <div class="review">
+                            <div class="username-date">
+                                <div><img src="{{ review.user.socialaccount_set.all.0.get_avatar_url }}"></div>
+                                <div><p>@{{ review.user.username }}</p><p>{{ review.date }}</p></div>
+                            </div>
+                            <div class="middle-line"></div>
+                            <a href="{{ review.get_absolute_url }}" class="review-title">
+                                <div class="inner">
+                                    <div class="rotate">
+                                        <p>{{ review.title }}</p><p>{{ review.text }}</p>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
-                    </a>
+                    {% endfor %}
                 </div>
-
-                <div class="review">
-                    <div class="username-date">
-                        <div><img src="{% static 'images/sample_friend.jpg' %}"></div>
-                        <div><p>username</p><p>15 Dec 2100</p></div>
-                    </div>
-                    <div class="middle-line"></div>
-                    <a href="" class="review-title"><p>Aaj ka gyaan</p></a>
-                </div>
-                
             </div>
-        </div>
-    </body>
+        {% else %}
+            <div class="no-review">No reviews to show! &#128546</div>
+        {% endif %}
+
+    <script>
+        const observer = new IntersectionObserver(entries => {
+            // Loop over the entries
+            entries.forEach(entry => {
+              // If the element is visible
+              if (entry.isIntersecting) {
+                // Add the animation class
+                entry.target.classList.add('rotate-animation');
+                return;
+              }
+              entry.target.classList.remove('rotate-animation');
+            });
+          });
+          
+        const boxlist = document.querySelectorAll('.rotate');
+          boxlist.forEach((el) => {
+            observer.observe(el);
+        })
+    </script>
+</body>
 {% endblock content %}
