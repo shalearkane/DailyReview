@@ -1,12 +1,5 @@
-.container {
-    width: 80vw;
-    max-height: 70vh;
-    background: rgba(74, 72, 69, 0.408);
-    position: absolute;
-    top: 22vh;
-    margin-left: 10vw;
-    overflow-y: overlay;
-    padding-bottom: 2rem;
+body {
+    overflow-x: hidden;
 }
 
 .img-user-date {
@@ -61,10 +54,21 @@
     color:rgba(237, 232, 223, 0.801)
 }
 
+/*////////////////////////////////////////////*/
+
+.review-thought {
+    display: flex;
+    flex-direction: row;
+    max-height: 25rem;
+    width: 200vw;
+    transition: 0.4s ease-out;
+    position: relative;
+}
+
 .title-review {
     display: flex;
     flex-direction: column;
-    margin: 0rem 6rem;
+    width: 100vw;
 }
 
 .title {
@@ -73,11 +77,14 @@
     padding: 0.5rem;
     font-size: 1.3rem;
     color: rgb(248, 241, 231);
+    margin-left: 6rem;
+    margin-right: 6rem;
 }
 
 .review {
     margin-top: 0.5rem;
-    max-height: 22rem;
+    margin-left: 6rem;
+    margin-right: 6rem;
     overflow-y: overlay;
     padding: 2rem 3rem;
     text-align: justify;
@@ -85,6 +92,87 @@
     color:rgb(239, 223, 200);
     line-height: 1.8rem;
 }
+
+/*///////////////////////////////////////////*/
+
+.personal-thoughts {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+}
+
+.personal-thoughts div:nth-child(1) {
+    background-color: rgba(199, 191, 180, 0.1);
+    text-align: center;
+    padding: 0.5rem;
+    font-size: 1.3rem;
+    color: rgb(248, 241, 231);
+    margin-left: 6rem;
+    margin-right: 6rem;
+}
+
+.personal-thoughts div:nth-child(2) {
+    margin-top: 0.5rem;
+    margin-left: 6rem;
+    margin-right: 6rem;
+    overflow-y: overlay;
+    padding: 2rem 3rem;
+    text-align: justify;
+    background-color: rgba(199, 191, 180, 0.1);
+    color:rgb(239, 223, 200);
+    line-height: 1.8rem;
+}
+
+.review-thought div button {
+    position: absolute;
+    background-color: rgb(107, 87, 52);
+    padding-top: 0.6rem;
+    padding-left: 1.8rem;
+    padding-right: 1.8rem;
+    padding-bottom: 0.1rem;
+    font-size: 1.2rem;
+    width: max-content;
+    border-top-left-radius: 0.8rem;
+    border-top-right-radius: 0.8rem;
+    transition: 0.15s ease-out;
+    border: none;
+    color: rgb(231, 204, 170);
+    top: 15vh;
+}
+
+.title-review button {
+    transform: rotateZ(90deg);
+    right: 93.5vw
+}
+
+.personal-thoughts button {
+    right: 94.22vw;
+    transform: rotateZ(-90deg);
+}
+
+/*///////////////////////////////////////////*/
+
+.title-review button:hover {
+    background-color: rgb(83, 64, 32);
+    transform: rotateZ(90deg) scale(1.02);
+}
+
+.title-review button:active {
+    background-color: rgb(57, 42, 17);
+    transform: rotateZ(90deg) scale(1);
+}
+
+.personal-thoughts button:hover {
+    background-color: rgb(83, 64, 32);
+    transform: rotateZ(-90deg) scale(1.02);
+}
+
+.personal-thoughts button:active {
+    background-color: rgb(57, 42, 17);
+    transform: rotateZ(-90deg) scale(1);
+}
+
+/*/////////////////////////*/
 
 .edit-delete {
     /* background-color: black; */
@@ -139,4 +227,22 @@
     transform: scale(1);
     background-color: rgb(104, 19, 2);
     /* border: 3px solid rgb(104, 19, 2);    */
+}
+
+.slide1 {
+    animation: slide-anim1 0.5s forwards;
+}
+
+@keyframes slide-anim1 {
+    from {right: 100vw;}
+    to {right: 0vw;}
+}
+
+.slide2 {
+    animation: slide-anim2 0.5s forwards;
+}
+
+@keyframes slide-anim2 {
+    from {right: 0vw;}
+    to {right: 100vw;}
 }
