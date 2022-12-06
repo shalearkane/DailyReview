@@ -27,7 +27,7 @@ class PublicFeed(ListView):
     context_object_name = "review_list"
 
     def get_queryset(self):
-        queryset = Review.objects.all(published=True).order_by("-date")
+        queryset = Review.objects.filter(published=True).order_by("-date")
         return queryset
 
 
