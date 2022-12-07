@@ -1,0 +1,63 @@
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.item1 {
+    align-self: center;
+    font-size: 1.8rem;
+    color: rgb(212, 220, 226);
+    animation: title 1s ease-out 0s 2 alternate;
+    text-shadow: 2px 2px 8px black;
+    height: 13vh;
+    line-height: 15vh;
+}
+
+@keyframes title {
+    0% {color: rgb(212, 220, 226);
+          font-size: 1.8rem;}
+    100% {color: aliceblue;
+        font-size: 1.9rem;}
+}
+
+.item2 {
+    background: linear-gradient(rgba(199, 191, 180, 0.1), rgba(199, 191, 180, 0.2));
+    height: 70vh;
+    overflow-y: overlay;
+    padding-bottom: 2rem;
+    position: relative;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.form-group label {
+    width: 12rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.7rem;
+    box-shadow: 10px 0px 10px -3px rgba(27, 17, 2, 0.924);
+    margin: 2rem;
+    text-align: right;
+    color: rgb(197, 197, 197);
+}
+
+.input {
+    margin: 1rem;
+    background-color: rgb(83, 62, 24);
+    width: 35rem;
+    max-height: 10rem;
+    overflow: overlay;
+    padding: 2.0rem;
+    color: #ddd;
+    box-shadow: 3px 3px 9px -3px rgb(43, 30, 3);
+    border: none
+}
