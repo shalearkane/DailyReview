@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     "review",
     "friendship",
     "notifications",
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [

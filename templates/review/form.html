@@ -1,9 +1,37 @@
 {% extends "base.html" %}
+{% load widget_tweaks %}
+{% load static %}
 {% block content %}
-    <h2>Today's Review</h2>
-    <form method="post" class="post-form">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="save btn btn-secondary">Save</button>
-    </form>
+<head>
+    <link rel="stylesheet" href="{% static 'form.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="item1">Today's Review</div>
+        <div class="item2">
+            <form method="post" class="form">
+                {% csrf_token %}
+                <div class="form-group" id="field1">
+                    <label for="title">Title:</label>
+                    {% render_field form.title class="input" id="title" name="title"%}
+                </div>
+                <div class="form-group" id="field2">
+                    <label for="text">Text:</label>
+                    {% render_field form.text class="input" id="text" name="text" placeholder="Aaj ka review likhein"%}
+                </div>
+                <div class="form-group" id="field3">
+                    <label for="personal_thoughts">Personal Thoughts:</label>
+                    {% render_field form.personal_thoughts class="input" id="personal_thoughts" name="personal_thoughts" placeholder="any personal thoughts?"%}
+                </div>
+                <div class="form-group">
+                    {% render_field form.visibility class="form-control" %}
+                </div>
+                <div class="form-group">
+                    {% render_field form.published class="form-control" %}
+                </div>
+                <button type="submit" class="save">Save</button>
+            </form>
+        </div>
+    </div>
+</body>
 {% endblock content %}
