@@ -115,7 +115,6 @@
 .review-title:hover .rotate{
     transform: scale(1.02);
     background-color: rgb(56, 41, 13);
-    color: #ddd;
 }
 
 .review-title:active .rotate{

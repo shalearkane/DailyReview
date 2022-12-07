@@ -45,7 +45,7 @@
     padding: 0.5rem 1rem;
     border-radius: 0.7rem;
     box-shadow: 10px 0px 10px -3px rgba(27, 17, 2, 0.924);
-    margin: 2rem;
+    margin: 1rem;
     text-align: right;
     color: rgb(197, 197, 197);
 }
@@ -60,4 +60,33 @@
     color: #ddd;
     box-shadow: 3px 3px 9px -3px rgb(43, 30, 3);
     border: none
+}
+
+.input:hover {
+    background-color: rgb(73, 54, 18);
+}
+
+.input:focus {
+    background-color: rgb(91, 70, 31);
+}
+
+#visibility {
+    margin: 0;
+    padding: 1rem;
+    padding-left: 2rem;
+    appearance: none;
+    background: url("images/arrow.png") no-repeat right;
+    background-size: 2rem;
+}
+
+#visibility:hover {
+    background-color: rgb(73, 54, 18);
+}
+
+#visibility:focus {
+    background-color: rgb(91, 70, 31);
+}
+
+#field4 div {
+    margin: 1rem;
 }
