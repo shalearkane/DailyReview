@@ -8,7 +8,7 @@
         <div class="container">
             <div class="item1">Daily Reviews</div>
             {% if review_list %}
-            <div class<div class="semicircle"></div>
+                <div class="semicircle"></div>
                 <div class="item2">
                     <div class="reviews">
                         {% for review in review_list %}
@@ -26,65 +26,11 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="review">
-                            <div class="username-date">
-                                <div><img src="{{ review.user.socialaccount_set.all.0.get_avatar_url }}"></div>
-                                <div><p>@{{ review.user.username }}</p><p>{{ review.date }}</p></div>
-                            </div>
-                            <div class="middle-line"></div>
-                            <a href="{{ review.get_absolute_url }}" class="review-title">
-                                <div class="inner">
-                                    <div class="rotate">
-                                        <p>{{ review.title }}</p><p>{{ review.text }}</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="review">
-                            <div class="username-date">
-                                <div><img src="{{ review.user.socialaccount_set.all.0.get_avatar_url }}"></div>
-                                <div><p>@{{ review.user.username }}</p><p>{{ review.date }}</p></div>
-                            </div>
-                            <div class="middle-line"></div>
-                            <a href="{{ review.get_absolute_url }}" class="review-title">
-                                <div class="inner">
-                                    <div class="rotate">
-                                        <p>{{ review.title }}</p><p>{{ review.text }}</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="review">
-                            <div class="username-date">
-                                <div><img src="{{ review.user.socialaccount_set.all.0.get_avatar_url }}"></div>
-                                <div><p>@{{ review.user.username }}</p><p>{{ review.date }}</p></div>
-                            </div>
-                            <div class="middle-line"></div>
-                            <a href="{{ review.get_absolute_url }}" class="review-title">
-                                <div class="inner">
-                                    <div class="rotate">
-                                        <p>{{ review.title }}</p><p>{{ review.text }}</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="review">
-                            <div class="username-date">
-                                <div><img src="{{ review.user.socialaccount_set.all.0.get_avatar_url }}"></div>
-                                <div><p>@{{ review.user.username }}</p><p>{{ review.date }}</p></div>
-                            </div>
-                            <div class="middle-line"></div>
-                            <a href="{{ review.get_absolute_url }}" class="review-title">
-                                <div class="inner">
-                                    <div class="rotate">
-                                        <p>{{ review.title }}</p><p>{{ review.text }}</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
                         {% endfor %}                   
                     </div>
                 </div>
+            {% else %}
+                <div class="no-review">No reviews to show! &#128546</div>
             {% endif %}
         </div>
 

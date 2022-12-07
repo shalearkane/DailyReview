@@ -5,12 +5,13 @@
         <link rel="stylesheet" href="{% static 'feed.css' %}">
     </head>
     <body>
-        <div class="title">Track your Daily Routine</div>
-        {% if review_list %}
-            <div class="container">
-                <div class="reviews">
-                    <div class="semicircle"></div>
-                    {% for review in review_list %}
+        <div class="container">
+            <div class="item1">Track your Daily Routine</div>
+            {% if review_list %}
+                <div class="semicircle"></div>
+                <div class="item2">
+                    <div class="reviews">
+                        {% for review in review_list %}
                         <div class="review">
                             <div class="username-date" style="">
                                 <div><p style="font-size: 1.2rem; color: rgb(183, 182, 180); text-align:right">{{ review.date }}</p></div>
@@ -24,13 +25,13 @@
                                 </div>
                             </a>
                         </div>
-                    {% endfor %}
+                        {% endfor %}
                 </div>
             </div>
-        {% else %}
-            <div class="no-review">You have yet to write a review</div>
-        {% endif %}
-
+            {% else %}
+                <div class="no-review">You have yet to write a review</div>
+            {% endif %}
+        </div>
     <script>
         const observer = new IntersectionObserver(entries => {
             // Loop over the entries
