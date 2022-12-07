@@ -27,7 +27,7 @@ class PublicFeed(ListView):
     context_object_name = "review_list"
 
     def get_queryset(self):
-        queryset = Review.objects.filter(published=True).order_by("-date")
+        queryset = Review.objects.filter().order_by("-date")
         return queryset
 
 
@@ -39,7 +39,7 @@ class DetailsView(DetailView):
 class Write(CreateView):
     model = Review
     template_name = "review/form.html"
-    fields = ["title", "text", "personal_thoughts", "visibility", "published"]
+    fields = ["title", "text", "personal_thoughts", "visibility"]
     success_url = reverse_lazy("personal-feed")
 
     def get(self, request, *args, **kwargs):
@@ -57,5 +57,5 @@ class Write(CreateView):
 class Edit(UpdateView):
     model = Review
     template_name = "review/form.html"
-    fields = ["title", "text", "personal_thoughts", "visibility", "published"]
+    fields = ["title", "text", "personal_thoughts", "visibility"]
     success_url = reverse_lazy("personal-feed")
