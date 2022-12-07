@@ -16,22 +16,50 @@
                     {% render_field form.title class="input" id="title" name="title"%}
                 </div>
                 <div class="form-group" id="field2">
-                    <label for="text">Text</label>
-                    {% render_field form.text class="input" id="text" name="text" placeholder="Aaj ka review likhein"%}
+                    <label for="text">Review</label>
+                    {% render_field form.text class="input" id="text" name="text" placeholder="Write your review here"%}
                 </div>
                 <div class="form-group" id="field3">
                     <label for="personal_thoughts">Personal Thoughts</label>
-                    {% render_field form.personal_thoughts class="input" id="personal_thoughts" name="personal_thoughts" placeholder="any personal thoughts?"%}
+                    {% render_field form.personal_thoughts class="input" id="personal_thoughts" name="personal_thoughts" placeholder="You can write your personal thoughts here"%}
                 </div>
                 <div class="form-group" id="field4">
-                    <label for="visibility">Visibility</label>
-                    <div style="background: rgb(83, 62, 24)">
-                        {% render_field form.visibility class="input" id="visibility" name="visibility"%}
+                    <label for="visibility">Share with</label>
+                    <div>
+                        <label id="label1" onclick=activate(this.id)>
+                            <input type="radio" id="ev" name="visibility" value="EV">
+                            Everyone
+                        </label>
+                        <label id="label2" onclick=activate(this.id)>
+                            <input type="radio" id="me" name="visibility" value="FR">
+                            My Friends
+                        </label>
+                        <label id="label3" onclick=activate(this.id)>
+                            <input type="radio" id="fr" name="visibility" value="ME">
+                            Only me
+                        </label>
                     </div>
                 </div>
-                <button type="submit" class="save">Save</button>
+                <button type="submit" class="save">Post Review</button>
             </form>
         </div>
     </div>
+
+    <script>
+        function arrayRemove(arr, value_removed) {
+            return arr.filter(function(value){
+                return value != value_removed;});
+        }
+      
+        function activate(id_name) {
+            var array = ["label1", "label2", "label3"];
+
+            document.getElementById(id_name).setAttribute('style', 'background-color: rgb(61, 44, 10) !important; font-size: 1.2rem !important');
+            var result = arrayRemove(array, id_name);
+            result.forEach(function (value) {
+                document.getElementById(value).setAttribute('style', 'background-color: rgb(83, 62, 24) !important; font-size: 1rem !important;');
+            });
+        }
+    </script>
 </body>
 {% endblock content %}

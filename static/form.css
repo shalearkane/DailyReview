@@ -68,25 +68,57 @@
 
 .input:focus {
     background-color: rgb(91, 70, 31);
-}
-
-#visibility {
-    margin: 0;
-    padding: 1rem;
-    padding-left: 2rem;
-    appearance: none;
-    background: url("images/arrow.png") no-repeat right;
-    background-size: 2rem;
-}
-
-#visibility:hover {
-    background-color: rgb(73, 54, 18);
-}
-
-#visibility:focus {
-    background-color: rgb(91, 70, 31);
+    outline: none !important;
 }
 
 #field4 div {
-    margin: 1rem;
+    margin: 1rem !important;
+    width: 35rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+#field4 div label {
+    margin: 0;
+    margin-bottom: 0.5rem;
+    background-color: rgb(83, 62, 24);
+    padding: 1.0rem;
+    padding-left: 1.5rem;
+    color: #ddd;
+    box-shadow: 3px 3px 9px -3px rgb(43, 30, 3);
+    border-radius: 0;
+    width: 100%;
+    text-align: left;
+    transition: 0.15s ease-out;
+    cursor: pointer;
+}
+
+#field4 div label input {
+    width: 0;
+}
+#field4 div label:hover {
+    background-color: rgb(73, 54, 18);
+}
+
+.save {
+    padding: 0.3rem 1.0rem;
+    border: none;
+    border-radius: 0.8rem;
+    background-color: rgb(37, 25, 4);
+    color: rgb(205, 198, 187);
+    font-size: 1.2rem;
+    transition: 0.15s ease-out;
+    box-shadow: 0 0 9px -2px rgb(40, 26, 3);
+}
+
+.save:hover {
+    transform: scale(1.02);
+    background-color: rgb(79, 59, 26);
+    color: #ddd;
+}
+
+.save:active {
+    transform: scale(1);
+    background-color: rgb(39, 27, 6);
 }
