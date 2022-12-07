@@ -14,16 +14,22 @@
 }
 
 @keyframes title {
-    0% {color: rgb(212, 220, 226);
-          font-size: 1.8rem;}
-    100% {color: aliceblue;
-        font-size: 1.9rem;}
+    0% {
+        color: rgb(212, 220, 226);
+        font-size: 1.8rem;
+    }
+
+    100% {
+        color: aliceblue;
+        font-size: 1.9rem;
+    }
 }
 
 .item2 {
-    background: linear-gradient(rgba(199, 191, 180, 0.1), rgba(199, 191, 180, 0.2));
+    background: linear-gradient(rgba(199, 191, 180, 0.1),
+            rgba(199, 191, 180, 0.2));
     height: 70vh;
-    overflow-y: overlay;
+    overflow-y: scroll;
     padding-bottom: 2rem;
     position: relative;
 }
@@ -46,7 +52,7 @@
     padding: 0.5rem 1rem;
     border-radius: 0.7rem;
     box-shadow: 3px 3px 9px -3px black;
-    margin: 2rem
+    margin: 2rem;
 }
 
 .username-date div img {
@@ -69,7 +75,7 @@
 
 .review-title {
     text-decoration: none;
-    margin: 1rem
+    margin: 1rem;
 }
 
 .inner {
@@ -81,7 +87,7 @@
     width: 35rem;
     max-height: 10rem;
     overflow: hidden;
-    padding: 2.0rem;
+    padding: 2rem;
     color: #ddd;
     transition: 0.3s;
     transition-timing-function: ease-out;
@@ -98,8 +104,13 @@
 }
 
 @keyframes wipe {
-    from {transform: rotateY(90deg);}
-    to {transform: rotateY(0deg);}
+    from {
+        transform: rotateY(90deg);
+    }
+
+    to {
+        transform: rotateY(0deg);
+    }
 }
 
 .rotate p:first-child {
@@ -112,12 +123,12 @@
     margin-top: 1rem;
 }
 
-.review-title:hover .rotate{
+.review-title:hover .rotate {
     transform: scale(1.02);
     background-color: rgb(56, 41, 13);
 }
 
-.review-title:active .rotate{
+.review-title:active .rotate {
     background-color: rgb(83, 62, 24);
     transform: scale(1);
 }
@@ -125,7 +136,7 @@
 .middle-line {
     align-self: stretch;
     width: 0.4rem;
-    background-color:rgb(55, 42, 19);
+    background-color: rgb(55, 42, 19);
 }
 
 .semicircle {
@@ -133,10 +144,10 @@
     height: 1rem;
     border-top-left-radius: 10rem;
     border-top-right-radius: 10rem;
-    border-top: 0.2rem   solid rgb(55, 42, 19);
+    border-top: 0.2rem solid rgb(55, 42, 19);
     border-left: 0.4rem solid rgb(55, 42, 19);
     position: relative;
-    left: 40.5%;
+    left: 40.25%;
 }
 
 .no-review {
@@ -148,12 +159,23 @@
 }
 
 @keyframes down {
-    from {margin-top:20vh;}
-    to {margin-top: 30vh}
+    from {
+        margin-top: 20vh;
+    }
+
+    to {
+        margin-top: 30vh;
+    }
 }
 
 @media screen and (max-width: 1400px) {
     .semicircle {
-        left: 39%;
+        left: 38.7%;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .semicircle {
+        left: 36.5%;
     }
 }
