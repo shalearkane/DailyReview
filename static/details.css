@@ -4,7 +4,6 @@ body {
 
 .img-user-date {
     margin: 3rem 5rem 0rem 5rem;
-    /* background-color: black; */
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -78,13 +77,13 @@ body {
     font-size: 1.3rem;
     color: rgb(248, 241, 231);
     margin-left: 6rem;
-    margin-right: 6rem;
+    margin-right: 4rem;
 }
 
 .review {
     margin-top: 0.5rem;
     margin-left: 6rem;
-    margin-right: 6rem;
+    margin-right: 4rem;
     overflow-y: overlay;
     padding: 2rem 3rem;
     text-align: justify;
@@ -107,13 +106,13 @@ body {
     padding: 0.5rem;
     font-size: 1.3rem;
     color: rgb(248, 241, 231);
-    margin-left: 6rem;
+    margin-left: 4rem;
     margin-right: 6rem;
 }
 
 .personal-thoughts div:nth-child(2) {
     margin-top: 0.5rem;
-    margin-left: 6rem;
+    margin-left: 4rem;
     margin-right: 6rem;
     overflow-y: overlay;
     padding: 2rem 3rem;
@@ -123,51 +122,56 @@ body {
     line-height: 1.8rem;
 }
 
+.div {
+    width: 2rem;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .review-thought div button {
-    position: absolute;
     background-color: rgb(107, 87, 52);
-    padding-top: 0.6rem;
+    padding-top: 0.2rem;
     padding-left: 1.8rem;
     padding-right: 1.8rem;
-    padding-bottom: 0.1rem;
+    padding-bottom: 0rem;
     font-size: 1.2rem;
-    width: max-content;
     border-top-left-radius: 0.8rem;
     border-top-right-radius: 0.8rem;
     transition: 0.15s ease-out;
     border: none;
     color: rgb(231, 204, 170);
-    top: 15vh;
 }
 
-.title-review button {
-    transform: rotateZ(90deg);
-    margin-left: 95.9vw
-}
-
-.personal-thoughts button {
-    margin-left: -8.5vw;
+.button2 {
+    width: 16rem;
     transform: rotateZ(-90deg);
+}
+
+.button1 {
+    width: 13rem;
+    transform: rotateZ(90deg);
 }
 
 /*///////////////////////////////////////////*/
 
-.title-review button:hover {
+.button1:hover {
     background-color: rgb(83, 64, 32);
     transform: rotateZ(90deg) scale(1.02);
 }
 
-.title-review button:active {
+.button1:active {
     background-color: rgb(57, 42, 17);
     transform: rotateZ(90deg) scale(1);
 }
 
-.personal-thoughts button:hover {
+.button2:hover {
     background-color: rgb(83, 64, 32);
     transform: rotateZ(-90deg) scale(1.02);
 }
 
-.personal-thoughts button:active {
+.button2:active {
     background-color: rgb(57, 42, 17);
     transform: rotateZ(-90deg) scale(1);
 }
