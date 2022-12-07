@@ -23,11 +23,9 @@
                     <label for="personal_thoughts">Personal Thoughts:</label>
                     {% render_field form.personal_thoughts class="input" id="personal_thoughts" name="personal_thoughts" placeholder="any personal thoughts?"%}
                 </div>
-                <div class="form-group">
-                    {% render_field form.visibility class="form-control" %}
-                </div>
-                <div class="form-group">
-                    {% render_field form.published class="form-control" %}
+                <div class="form-group" id="field4">
+                    <label for="visibility">Visibility:</label>
+                    {% render_field form.visibility class="form-control" id="visibility" name="visibility"%}
                 </div>
                 <button type="submit" class="save">Save</button>
             </form>
