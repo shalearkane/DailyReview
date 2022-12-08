@@ -89,7 +89,9 @@
                     },
                     success: function(data, status, xhr) {
                         $(`#send-${user_id}`).text("Request Sent");
-                        $(`#send-${user_id}`).addClass('disabled');
+                        $(`#send-${user_id}`).toggleClass("request-sent");
+                        $(`#send-${user_id}`).attr("disabled", "")
+                        $(`#send-${user_id}`).removeClass("send-request");
                     }
                 })
             };
