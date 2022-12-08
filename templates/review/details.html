@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<head>
-    <link rel="stylesheet" href="{% static 'details.css' %}">
-</head>
-<body>
+    <head>
+        <link rel="stylesheet" href="{% static 'details.css' %}">
+    </head>
+    <body>
         <div class="img-user-date">
             <div class="image">
                 <img src="{% static 'images/sample_friend.jpg' %}" alt="">
@@ -25,22 +25,23 @@
                     it officia minim enim pariatur. Aute voluptate magna ut qui exercitation nulla.Exercitation laboris sit esse anim. Commodo ad sint enim reprehenderit nostrud ullamco do fugiat incididunt laboris dolor et irure incididunt. Do consequat laborum tempor et nostrud cillum tempor ex adipisicing id.Minim deserunt sint cillum est irure aliquip commodo nisi minim esse. Tempor quis esse exercitation aliqua eu dolor velit ad. Fugiat do non quis anim ut irure ea ullamco sunt officia do do quis. Laboris laborum labore aliqua anim velit pariatur exercitation cillum. Eiusmod sit exercitation dolor excepteur aute officia duis est mollit aute ut do consectetur. Non sint laboris ea voluptate.Nulla ullamco enim voluptate incididunt veniam ut. Pariatur sit occaecat quis laborum reprehenderit consequat ut ut tempor irure laboris veniam irure fugiat. Occaecat occaecat nulla culpa velit reprehenderit laborum aute. Magna aliqua aliqua sit pariatur voluptate pariatur Lorem veniam. Aliqua velit occaecat in sint tempor nulla.SUt voluptate exercitation pariatur nulla nulla aute id labore eu ipsum. Minim minim laborum ipsum minim. Reprehenderit duis et culpa elit sit dolore magna quis id duis eu irure. Occaecat ea ex sint magna excepteur. Sint velit id quis cupidatat eiusmod aliquip velit sint. Sit dolor voluptate magna qui voluptate nostrud irure sit sunt aute reprehenderit laborum qui excepteur.Et exercitation reprehenderit commodo sint voluptate ipsum exercitation. Dolore excepteur exercitation ad dolore do et veniam cillum occaecat culpa ut cupidatat minim eiusmod. Mollit ex voluptate veniam deserunt nisi aliquip laborum. Eiusmod id ullamco esse aliqua irure non sint.Aliquip ad amet consequat commodo ipsum laborum. Magna voluptate ea labore culpa. Nisi excepteur mollit nostrud deserunt aliquip anim. Ipsum non ipsum elit nostrud esse. Laborum laborum mollit reprehenderit minim incididunt eiusmod velit in in minim irure. Laborum magna irure dolor fugiat ut ipsum ea sit id dolor dolore amet Lorem labore. Occaecat pariatur duis mollit aliquip magna dolore adipisicing.Veniam ullamco amet occaecat commodo occaecat Lorem nisi laborum mollit. Ea veniam magna dolore occaecat officia tempor tempor sit adipisicing velit incididunt excepteur. Sint in dolor esse do laboris consectetur duis. Cillum consequat duis laborum est in amet laborum amet et. Excepteur exercitation sunt labore exercitation sunt. Incididunt consequat duis esse ipsum tempor nisi. Mollit sit duis eu dolore est officia occaecat non.int aliqua ad amet ullamco irure consequat minim qui pariatur. Commodo ad nulla id pariatur proident nulla dolore consequat laboris. Consectetur nulla qui incididunt commodo voluptate sint sit dolor nostrud et. Incididunt amet cupidatat duis excepteur anim do.Irure et eu irure officia ullamco est ullamco do labore. Aute deserunt labore laboris et ad eiusmod ad duis ullamco sint dolor. Reprehenderit amet dolore excepteur magna duis.
                 </div>
             </div>
-            <div class="div"><button class="button2" onclick="slide2()">Personal Thoughts</button></div>
-            <div class="div"><button class="button1" onclick="slide1()">View Review</button></div>
+            <div class="div">
+                <button class="button2" onclick="slide2()">Personal Thoughts</button>
+            </div>
+            <div class="div">
+                <button class="button1" onclick="slide1()">View Review</button>
+            </div>
             <div class="personal-thoughts">
                 <div>Personal Thoughts</div>
                 <div>
                     Eu minim nisi magna nIpsum eu incididunt cillum irure elit velit exercitation occaecat reprehenderit veniam. Do adipisicing laboris dolor exercitation sint aliquip et ut. Consequat reprehenderit mollit qui est minim incididunt in elit. Elit exercitation aute ea eiusmod irure. Duis nisi deserunt laboris reprehenderit qui magna ut. Lorem ad deserunt aliqua et pariatur pariatur eiusmod non nulla labore cillum anim consequat id labore. Adipisicing elit irure laboris adipisicing exercitation deserunt laborum. Amet occaecat ex adipisicing ea fugiat veniam deserunt nulla consectetur. Dolor ipsum ipsum adipisicing laboris id id do irure quis ad et dolor anim consequat. Irure amculpa ullamco ex sint. Ad enim nulla aliquip id dolore excepteur pariatur consequat consectetur cillum. Ex nisi ut aute consectetur quis laboris aliquip sit consectetur fugiat consequat reprehenderit officia esse. Aliquip exercitation exercitation occaecat sint officia laboris ipsum excepteur pariatur. Labore ex enim ut et ea. Culpa nostrud aute voluptate excepteur ex ipsum eu mollit veniam laboris ut. velit eiusmod. Consequat incididunt minim enim laborum.
                 </div>
             </div>
-        </div>    
+        </div>
         <div class="edit-delete">
             <button id="edit-button" onclick="activate(this.id)" class="button">Edit Review</button>
             <button id="delete-button" onclick="activate(this.id)" class="button">Delete Review</button>
         </div>
-
-
-
         <script>
             function slide1() {
                 document.getElementById("review-thought").classList.remove("slide2");
@@ -52,5 +53,5 @@
                 document.getElementById("review-thought").classList.toggle("slide2");
             }
         </script>
-</body>
+    </body>
 {% endblock content %}

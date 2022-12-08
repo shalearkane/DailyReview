@@ -27,7 +27,12 @@ def DiscoverFriendsView(request):
         friend_ids = Friendship.objects.filter(from_user=request.user).values_list(
             "to_user_id", flat=True
         )
+        friend_request_ids = FriendshipRequests.objects.filter(
+            from_user=request.user
+        ).values_list("to_user_id", flat=True)
+
         friend_ids_list = list(friend_ids)
+        friend_ids_list.extend(friend_request_ids)
         friend_ids_list.append(request.user.id)
 
         strangers = (
@@ -46,7 +51,7 @@ class FriendRequestsView(ListView):
 
     def get_queryset(self):
         queryset = FriendshipRequests.objects.filter(
-            to_user=self.request.user, rejected=False
+            to_user=self.request.user, rejected=False, accepted=False
         ).order_by("-created")
 
         return queryset
@@ -65,16 +70,17 @@ def SendFriendshipRequestView(request, user_id):
 
 def ProcessFriendRequestView(request, pk):
     if request.method == "POST":
-        fr: FriendshipRequests = FriendshipRequests.objects.get(pk=pk)
-        Friendship.objects.get_or_create(from_user=fr.from_user, to_user=fr.to_user)
-        Friendship.objects.get_or_create(from_user=fr.to_user, to_user=fr.from_user)
-        fr.accepted = True
-        fr.save()
+        if request.POST["action"] == "accept":
+            fr: FriendshipRequests = FriendshipRequests.objects.get(pk=pk)
+            Friendship.objects.get_or_create(from_user=fr.from_user, to_user=fr.to_user)
+            Friendship.objects.get_or_create(from_user=fr.to_user, to_user=fr.from_user)
+            fr.accepted = True
+            fr.save()
 
-        return HttpResponse(status=HTTPStatus.ACCEPTED)
+            return HttpResponse(status=HTTPStatus.ACCEPTED)
 
-    if request.method == "PATCH":
-        fr: FriendshipRequests = get_object_or_404(FriendshipRequests, pk=pk)
-        fr.rejected = True
-        fr.save()
-        return HttpResponse(status=HTTPStatus.ACCEPTED)
+        if request.POST["action"] == "reject":
+            fr: FriendshipRequests = get_object_or_404(FriendshipRequests, pk=pk)
+            fr.rejected = True
+            fr.save()
+            return HttpResponse(status=HTTPStatus.ACCEPTED)

@@ -9,14 +9,14 @@ body {
 }
 
 nav {
-    background-color: rgba(223, 233, 237, 0.4); 
-    border-radius: 0.4rem; 
-    margin: 0.5rem; 
+    background-color: rgba(223, 233, 237, 0.4);
+    border-radius: 0.4rem;
+    margin: 0.5rem;
     height: 3rem
 }
 
 .navbar-brand {
-    color:rgb(42, 41, 41); 
+    color:rgb(42, 41, 41);
     padding: 1rem;
     font-size: 1rem;
     font-weight: bold;
@@ -38,14 +38,14 @@ input {
     height: 2rem;
     padding-top: 0.2rem;
     color: rgb(183, 182, 180);
-    box-shadow: 0px 0px 10px 1px rgb(130, 116, 75); 
+    box-shadow: 0px 0px 10px 1px rgb(130, 116, 75);
 }
 
 .d-flex > a:hover {
     background-color: rgb(42, 41, 41);
     border-color: rgb(42, 41, 41);
     color: rgb(183, 182, 180);
-    box-shadow: 0px 0px 10px 1px rgb(130, 116, 75); 
+    box-shadow: 0px 0px 10px 1px rgb(130, 116, 75);
 }
 
 .btn-info {
@@ -59,14 +59,14 @@ input {
   width: 7px;
   display: block;
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: rgb(128, 128, 128, 0.5); 
+  background: rgb(128, 128, 128, 0.5);
   border-radius: 0.5rem;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555; 
+  background: #555;
 }

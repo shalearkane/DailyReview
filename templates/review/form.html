@@ -2,55 +2,53 @@
 {% load widget_tweaks %}
 {% load static %}
 {% block content %}
-<head>
-    <link rel="stylesheet" href="{% static 'form.css' %}">
-</head>
-<body>
-    <div class="container">
-        <div class="item1">Today's Review</div>
-        <div class="item2">
-            <form method="post" class="form">
-                {% csrf_token %}
-                <div class="form-group" id="field1">
-                    <label for="title">Title</label>
-                    {% render_field form.title class="input" id="title" name="title"%}
-                </div>
-                <div class="form-group" id="field2">
-                    <label for="text">Review</label>
-                    {% render_field form.text class="input" id="text" name="text" placeholder="Write your review here"%}
-                </div>
-                <div class="form-group" id="field3">
-                    <label for="personal_thoughts">Personal Thoughts</label>
-                    {% render_field form.personal_thoughts class="input" id="personal_thoughts" name="personal_thoughts" placeholder="You can write your personal thoughts here"%}
-                </div>
-                <div class="form-group" id="field4">
-                    <label for="visibility">Share with</label>
-                    <div>
-                        <label id="label1" onclick=activate(this.id)>
-                            <input type="radio" id="ev" name="visibility" value="EV">
-                            Everyone
-                        </label>
-                        <label id="label2" onclick=activate(this.id)>
-                            <input type="radio" id="me" name="visibility" value="FR">
-                            My Friends
-                        </label>
-                        <label id="label3" onclick=activate(this.id)>
-                            <input type="radio" id="fr" name="visibility" value="ME">
-                            Only me
-                        </label>
+    <head>
+        <link rel="stylesheet" href="{% static 'form.css' %}">
+    </head>
+    <body>
+        <div class="container">
+            <div class="item1">Today's Review</div>
+            <div class="item2">
+                <form method="post" class="form">
+                    {% csrf_token %}
+                    <div class="form-group" id="field1">
+                        <label for="title">Title</label>
+                        {% render_field form.title class="input" id="title" name="title" %}
                     </div>
+                    <div class="form-group" id="field2">
+                        <label for="text">Review</label>
+                        {% render_field form.text class="input" id="text" name="text" placeholder="Write your review here" %}
+                    </div>
+                    <div class="form-group" id="field3">
+                        <label for="personal_thoughts">Personal Thoughts</label>
+                        {% render_field form.personal_thoughts class="input" id="personal_thoughts" name="personal_thoughts" placeholder="You can write your personal thoughts here" %}
+                    </div>
+                    <div class="form-group" id="field4">
+                        <label for="visibility">Share with</label>
+                        <div>
+                            <label id="label1" onclick=activate(this.id)>
+                                <input type="radio" id="ev" name="visibility" value="EV">
+                                Everyone
+                            </label>
+                            <label id="label2" onclick=activate(this.id)>
+                                <input type="radio" id="me" name="visibility" value="FR">
+                                My Friends
+                            </label>
+                            <label id="label3" onclick=activate(this.id)>
+                                <input type="radio" id="fr" name="visibility" value="ME">
+                                Only me
+                            </div>
+                        </div>
+                        <button type="submit" class="save">Post Review</button>
+                    </form>
                 </div>
-                <button type="submit" class="save">Post Review</button>
-            </form>
-        </div>
-    </div>
-
-    <script>
+            </div>
+            <script>
         function arrayRemove(arr, value_removed) {
             return arr.filter(function(value){
                 return value != value_removed;});
         }
-      
+
         function activate(id_name) {
             var array = ["label1", "label2", "label3"];
 
@@ -60,6 +58,6 @@
                 document.getElementById(value).setAttribute('style', 'background-color: rgb(83, 62, 24) !important; font-size: 1rem !important;');
             });
         }
-    </script>
-</body>
-{% endblock content %}
+            </script>
+        </body>
+    {% endblock content %}

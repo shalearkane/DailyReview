@@ -14,10 +14,15 @@
 }
 
 @keyframes title {
-    0% {color: rgb(212, 220, 226);
-          font-size: 1.8rem;}
-    100% {color: aliceblue;
-        font-size: 1.9rem;}
+    0% {
+        color: rgb(212, 220, 226);
+        font-size: 1.8rem;
+    }
+
+    100% {
+        color: aliceblue;
+        font-size: 1.9rem;
+    }
 }
 
 .item2 {
@@ -97,6 +102,7 @@
 #field4 div label input {
     display: none;
 }
+
 #field4 div label:hover {
     background-color: rgb(73, 54, 18);
 }

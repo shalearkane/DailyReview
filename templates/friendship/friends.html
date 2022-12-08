@@ -17,31 +17,31 @@
                                 {% for friend in friends_list %}
                                     <div class="card">
                                         <img src="{{ friend.to_user.socialaccount_set.all.0.get_avatar_url }}"
-                                            class="card-img-top"
-                                            alt="avatar">
+                                             class="card-img-top"
+                                             alt="avatar">
                                         <div class="card-body">
                                             <p class="card-title">{{ friend.to_user.first_name }} {{ friend.to_user.last_name }}</p>
                                             <p class="card-text">@{{ friend.to_user.username }}</p>
                                         </div>
-                                    </div>    
-                                {% endfor %}                   
+                                    </div>
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
                 {% endif %}
-                    <div class="right">
-                        <div class="one" id="connect">Connect to someone you may know</div>
-                        <div class="two">
-                            <div class="dropdown" id="mainDropDown">
-                                <input onclick="myFunction()"
-                                       type="text"
-                                       placeholder="Search by Name or Username"
-                                       id="myInput"
-                                       onkeyup="filterFunction()">
-                                <div id="myDropdown" class="dropdown-content"></div>
-                            </div>
+                <div class="right">
+                    <div class="one" id="connect">Connect to someone you may know</div>
+                    <div class="two">
+                        <div class="dropdown" id="mainDropDown">
+                            <input onclick="myFunction()"
+                                   type="text"
+                                   placeholder="Search by Name or Username"
+                                   id="myInput"
+                                   onkeyup="filterFunction()">
+                            <div id="myDropdown" class="dropdown-content"></div>
                         </div>
                     </div>
+                </div>
             </div>
         </div>
         <script>
@@ -52,17 +52,15 @@
                     success: function (data, status, xhr) {
                         var $dropdown = $("#myDropdown");
                         data = JSON.parse(data)
-                        console.log("this is happening")
-                        console.log(data)
                         $.each(data, function(key, value) {
                             $dropdown.append(
                                 `
                                 <div class="friend">
                                     <div><img src="{%static 'images/sample_friend.jpg' %}"></div>
                                     <div><p>${value.first_name} ${value.last_name}</p><p>@${value.username}</p></div>
-                                    <div><button id="${value.username}" onclick="activate(this.id)" class="send-request">Add Friend</button></div>
+                                    <div><button value="${value.id}" class="send-request" id="send-${value.id}" onclick="activate(${value.id})">Add Friend</button></div>
                                 </div>
-                                
+
                                 `
                             );
                         });
@@ -79,12 +77,22 @@
                 document.getElementById("myDropdown").classList.toggle("show");
             }
 
-            function activate(id_name) {
-                document.getElementById(id_name).innerHTML = "Request Sent";
-                document.getElementById(id_name).classList.toggle("request-sent");
-                document.getElementById(id_name).setAttribute("disabled", "");
-                document.getElementById(id_name).classList.remove("send-request");
-            }
+            function activate(user_id){
+                console.log("something is happening")
+                var proto_url = '{% url 'send-friendship-request' user_id=0 %}'
+                var url = proto_url.substr(0, proto_url.length - 1) + user_id
+                $.ajax({
+                    url: url,
+                    method: "GET",
+                    data: {
+                        csrfmiddlewaretoken: '{{ csrf_token }}',
+                    },
+                    success: function(data, status, xhr) {
+                        $(`#send-${user_id}`).text("Request Sent");
+                        $(`#send-${user_id}`).addClass('disabled');
+                    }
+                })
+            };
         </script>
     </body>
 {% endblock content %}

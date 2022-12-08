@@ -12,27 +12,32 @@
                 <div class="item2">
                     <div class="reviews">
                         {% for review in review_list %}
-                        <div class="review">
-                            <div class="username-date" style="">
-                                <div><p style="font-size: 1.2rem; color: rgb(183, 182, 180); text-align:right">{{ review.date }}</p></div>
-                            </div>
-                            <div class="middle-line"></div>
-                            <a href="{{ review.get_absolute_url }}" class="review-title">
-                                <div class="inner">
-                                    <div class="rotate">
-                                        <p>{{ review.title }}</p><p>{{ review.text }}</p>
+                            <div class="review">
+                                <div class="username-date" style="">
+                                    <div>
+                                        <p style="font-size: 1.2rem;
+                                                  color: rgb(183, 182, 180);
+                                                  text-align:right">{{ review.date }}</p>
                                     </div>
                                 </div>
-                            </a>
-                        </div>
+                                <div class="middle-line"></div>
+                                <a href="{{ review.get_absolute_url }}" class="review-title">
+                                    <div class="inner">
+                                        <div class="rotate">
+                                            <p>{{ review.title }}</p>
+                                            <p>{{ review.text }}</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
                         {% endfor %}
+                    </div>
                 </div>
-            </div>
             {% else %}
                 <div class="no-review">You have yet to write a review</div>
             {% endif %}
         </div>
-    <script>
+        <script>
         const observer = new IntersectionObserver(entries => {
             // Loop over the entries
             entries.forEach(entry => {
@@ -45,11 +50,11 @@
               entry.target.classList.remove('rotate-animation');
             });
           });
-          
+
         const boxlist = document.querySelectorAll('.rotate');
           boxlist.forEach((el) => {
             observer.observe(el);
         })
-    </script>
-</body>
+        </script>
+    </body>
 {% endblock content %}

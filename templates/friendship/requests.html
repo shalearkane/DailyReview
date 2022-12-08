@@ -2,5 +2,73 @@
 {% load static %}
 {% load socialaccount %}
 {% block content %}
-    {% for request in friend_requests %}{{ request.from_user.username }}{% endfor %}
+    <div class="d-flex align-items-center justify-content-center h-100">
+        <div class="card" style="width: 50%;align: center;">
+            <div class="card-body">
+                <h5 class="card-title">Your Friend Requests</h5>
+                <ul class="list-group">
+                    {% for request in friend_requests %}
+                        <li id="li-{{ request.id }}" class="list-group-item">
+                            <div class="d-flex flex-row bd-highlight align-items-center">
+                                <div class="flex-fill align-self-center">{{ request.from_user.username }}</div>
+                                <div class="align-self-center">
+                                    <button id="accept-{{ request.id }}"
+                                            type="button"
+                                            class="btn btn-success"
+                                            value="{{ request.id }}">Accept</button>
+                                </div>
+                                <div class="align-self-center">
+                                    <button id="reject-{{ request.id }}"
+                                            type="button"
+                                            class="btn btn-danger"
+                                            value="{{ request.id }}">Reject</button>
+                                </div>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function(){
+            $(".btn-success").button().click(function(){
+                var pk = $(this).val()
+                var proto_url = '{% url 'process-friendship-request' pk=0 %}'
+                var url = proto_url.substr(0, proto_url.length - 1) + pk
+                $.ajax({
+                    url: url,
+                    method: "POST",
+                    data: {
+                        csrfmiddlewaretoken: '{{ csrf_token }}',
+                        action : "accept"
+                    },
+                    success: function(data, status, xhr) {
+                        $(`#reject-${pk}`).remove();
+                        $(`#accept-${pk}`).text("Accepted");
+                        $(`#accept-${pk}`).addClass('disabled');
+                    }
+                })
+            });
+
+            $(".btn-danger").button().click(function(){
+                var pk = $(this).val()
+                var proto_url = '{% url 'process-friendship-request' pk=0 %}'
+                var url = proto_url.substr(0, proto_url.length - 1) + pk
+                $.ajax({
+                    url: url,
+                    method: "POST",
+                    data: {
+                        csrfmiddlewaretoken: "{{ csrf_token }}",
+                        action: "reject"
+                    },
+                    success: function(data, status, xhr) {
+                        $(`#accept-${pk}`).remove();
+                        $(`#reject-${pk}`).text("Rejected");
+                        $(`#reject-${pk}`).addClass('disabled');
+                    }
+                })
+            });
+        })
+    </script>
 {% endblock content %}
