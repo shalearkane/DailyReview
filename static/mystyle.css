@@ -5,7 +5,7 @@ body {
     background-size: cover;
     background-position-y: 30%;
     background-attachment: fixed;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 nav {

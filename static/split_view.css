@@ -1,0 +1,183 @@
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.item1 {
+    align-self: center;
+    font-size: 1.8rem;
+    color: rgb(212, 220, 226);
+    animation: title 1s ease-out 0s 2 alternate;
+    text-shadow: 2px 2px 8px black;
+    height: 15vh;
+    line-height: 15vh;
+}
+
+@keyframes title {
+    0% {color: rgb(212, 220, 226);
+          font-size: 1.8rem;}
+    100% {color: aliceblue;
+        font-size: 1.9rem;}
+}
+
+.item2 {
+    display: grid;
+    gap: 1rem 0.5rem;
+    grid-template-rows: min-content minmax(0, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    height: 70vh;
+}
+
+.bottom {
+    background: linear-gradient(rgba(199, 191, 180, 0.1), rgba(199, 191, 180, 0.2));
+    overflow:auto;
+}
+
+.top {
+    background: linear-gradient(rgba(199, 191, 180, 0.1), rgba(199, 191, 180, 0.2));
+    color: rgb(226, 226, 226);
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-align: center;
+    line-height: 3rem;
+    /* align-self: center; */
+}
+
+.select-friend {
+    position: relative;
+}
+
+#myInput {
+    background: url('images/searchicon.png') 0.8rem center no-repeat;
+    background-size: 1.2rem;
+    font-size: 16px;
+    padding: 0px 0px 0px 46px;
+    border: none;
+    color: #ddd;
+    height: 3rem;
+    width: -webkit-fill-available;
+    margin-left: 0;
+}
+
+#myInput::placeholder {
+    color: rgba(226, 226, 226, 0.6);
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+#myInput:-ms-input-placeholder {
+    color: rgba(226, 226, 226, 0.6);
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+#myInput::-ms-input-placeholder {
+    color: rgba(226, 226, 226, 0.6);
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.select-friend:hover {
+    background:rgba(206, 198, 184, 0.242);
+}
+.select-friend:focus {
+    background:rgba(138, 127, 110, 0.242);
+}
+
+#myInput:focus{
+    outline: 2px solid rgba(255, 255, 255, 0.575)
+}
+
+.dropdown-content {
+    display: none;
+    overflow-y: auto;
+    max-height: 22rem;
+    /* width: auto;
+    display: block; */
+    border-radius: 0 0 0.7rem 0.7rem;
+    z-index: 1;
+    position: absolute;
+    width: 100%;
+}
+
+.friend {
+    background: rgba(146, 139, 128, 0.862);
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    padding: 0.5rem;
+    padding-left: 2rem;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.friend div img {
+    background: transparent;
+    width: 5rem;
+    border-radius: 10rem;
+    border: 2px solid #ddd;
+}
+
+.friend div:nth-child(2) {
+    /* background: none; */
+    /* width: 13rem; */
+    overflow: hidden;
+}
+
+.friend div p:first-child {
+    /* background: none; */
+    color: rgb(255, 255, 255);
+    line-height: 1.2rem;
+    margin: 0;
+    margin-left:1rem;
+    text-align: left;
+    width: 90%;
+}
+
+.friend div p:last-child {
+    color: #ddd;
+    line-height: 0.8rem;
+    margin: 0;
+    margin-top: 0.5rem;
+    margin-left:1rem;
+    font-size: 0.8rem;
+    text-align: left;
+}
+
+.friend:hover {
+    background-color: #ddd;
+}
+
+.friend:hover div p:first-child {
+    color: rgb(114, 92, 53);
+    font-weight: bold;
+}
+
+.friend:hover div p:last-child {
+    color: rgb(114, 92, 53)
+}
+
+.show {display: block;}
+
+
+.bottom p:first-child {
+    text-align: center;
+    padding: 1rem;
+    font-size: 1.3rem;
+    color: rgb(248, 241, 231);
+    margin: 0;
+    /* overflow-y: auto; */
+}
+
+.bottom p:nth-child(2) {
+    /* overflow-y: auto; */
+    padding: 0rem 3rem;
+    text-align: justify;
+    /* background-color: rgba(199, 191, 180, 0.1); */
+    color:rgb(239, 223, 200);
+    margin: 0;
+    /* line-height: 1.8rem; */
+}
+
+.pShow {color: rgba(199, 191, 180, 0.301) !important}

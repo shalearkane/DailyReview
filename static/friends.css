@@ -123,7 +123,7 @@
 .dropdown-content {
     display: none;
     /* left: 2px; */
-    overflow-y: scroll;
+    overflow-y: auto;
     max-height: 22rem;
     border-radius: 0 0 0.7rem 0.7rem;
 }

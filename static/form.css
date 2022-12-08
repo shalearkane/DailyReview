@@ -23,7 +23,7 @@
 .item2 {
     background: linear-gradient(rgba(199, 191, 180, 0.1), rgba(199, 191, 180, 0.2));
     height: 70vh;
-    overflow-y:scroll;
+    overflow-y:auto;
     padding-bottom: 2rem;
     position: relative;
 }
@@ -55,7 +55,7 @@
     background-color: rgb(83, 62, 24);
     width: 35rem;
     max-height: 10rem;
-    overflow: overlay;
+    overflow: auto;
     padding: 2.0rem;
     color: #ddd;
     box-shadow: 3px 3px 9px -3px rgb(43, 30, 3);

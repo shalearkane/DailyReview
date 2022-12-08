@@ -1,1 +1,79 @@
 {% extends "base.html" %}
+{% load static %}
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'split_view.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="item1">Compare your reviews with others</div>
+        <div class="item2">
+            <div class="select-date top">
+                Select Date:
+            </div>
+            <div class="select-friend top">
+                <input onclick="show_friends()"
+                        type="text"
+                        placeholder="Compare with..."
+                        id="myInput"
+                        onkeyup="filterFunction()">
+                <div id="myDropdown" class="dropdown-content"></div>
+            </div>
+            <div class="review-left bottom">
+                <p>Aaj ka gyaan</p>
+                <p>
+                    Consequat do dolor tempor fugiat nulla occaecat aute aliquip minim Lorem esse est. Pariatur eu officia officia nostrud coCillum pariatur sit et culpa ullamco et fugiat ea velit nostrud. Laborum adipisicing aliquip eiusmod enim ipsum in et cillum aliqua anim adipisicing veniam eu non. Veniam consectetur commodo nisi enim proident tempor ut sit incididunt anim id exercitation anim non. Deserunt esse ea occaecat do labore sunt nisi nisi. Est Lorem laborum consequat consectetur nostrud. Proident minim officia laboris sint aute ad enim reprehenderit ipsum. Deserunt non proident esse culpa nulla ad minim dolore elit sint mollit commodo voluptate tempor.Velit reprehenderit dolor esse nostrud laborum Lorem eu anim ut ut amet. Consectetur sit et anim aliqua do deserunt velit id ut anim. Eiusmod aliquip laborum ut velit in fugiat enim non sint consectetur duis. Nisi veniam qui qui Lorem fugiat cillum est minim sunt laboris dolore. Laborum officia fugiat culpa eu incididunt laborum exercitation est laboris. Nisi fugiat est laborum qui sit. Nisi culpa enim voluptate excepteur et in magna consectetur amet duis sint.Laborum sit eiusmod labore dolor irure adipisicing sint in ullamco anim aute. Adipisicing tempor amet mollit sint incididunt fugiat mollit et aliquip id sint velit proident. Sit nostrud eu laboris velit proident duis deserunt est pariatur pariatur fugiat aliqua magna. Minim ipsum nisi amet exercitation excepteur in adipisicing exercitation laborum elit pariatur et tempor.Anim Lorem mollit ex duis cupidatat quis eu excepteur do cupidatat aliqua. Eu excepteur esse nostrud ullamco in mollit ipsum. Et voluptate ipsum enim voluptate fugiat fugiat proident commodo enim. Nostrud dolore irure culpa eiusmod cupidatat ipsum in Lorem dolore nisi reprehenderit dolore dolore exercitation. Ad minim exercitation officia proident cillum enim labore laborum eiusmod est magna minim. Et aliquip adipisicing consectetur id velit tempor veniam.Ut ullamco duis ex commodo officia duis. Sunt minim duis cupidatat est adipisicing excepteur aliquip. Irure nostrud consectetur adipisicing laboris dolor et do quis ea aliquip nostrud sit. Adipisicing et adipisicing elit velit laboris quis cillum exercitation anim pariatur. Lorem minim in minim commodo fugiat eiusmod ut.Anim elit fugiat consectetur fugiat anim ipsum excepteur cillum amet ad ea sit incididunt voluptate. Cillum exercitation nostrud officia do qui ex fugiat est officia. Sit sint consectetur ut non sunt duis est quis sit. Aute commodo sint eu id sit.mmodo fugiat in. Fugiat voluptate elit duis eiusmod amet occaecat nulla ea minim est consectetur. Anim anim aliqua eiusmod sunt officia id. Fugiat eu aliquip ipsum aute veniam proident magna do labore est consectetur. Consequat ullamco laboris ipsum incididunt nulla ad veniam aliqua exercitation laboris consectetur.
+                </p>
+            </div>
+            <div class="review-right bottom">
+                <p id="right-title">Aaj ka gyaan part2</p>
+                <p id="right-review">
+                    Excepteur deserunt qui eiusmod adipisicing aliqua velit anim id laboris ex labore nostrud officia. Ex consequat elit occaecat adipisicing ex ipsum pariatur proident. Ut culpa dolore magna irure mollit laboris excepteur anim veniam officia qui pariatur eiusmod fugiat. Excepteur ea sunt veniam dolor enim velit pariatur. Irure ex esse veniam reprehenderit. Ex reprehenderit esse est pariatur consectetur irure ullamco nisi labore dolore ipsum. Mollit aliqua adipisicing dolore minim sint labore non cupidatat et non deserunt fugiat.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $.ajax({
+                url: "{% url 'discover-friends' %}",
+                method: "GET",
+                success: function (data, status, xhr) {
+                    var $dropdown = $("#myDropdown");
+                    data = JSON.parse(data)
+                    console.log("this is happening")
+                    console.log(data)
+                    $.each(data, function(key, value) {
+                        $dropdown.append(
+                            `
+                            <div class="friend" id=${value.username} onclick="show_review(this.id)">
+                                <div><img src="{%static 'images/sample_friend.jpg' %}"></div>
+                                <div><p>${value.first_name} ${value.last_name}</p><p>@${value.username}</p></div>
+                            </div>
+                            `
+                        );
+                    });
+                },
+                error: function (xhr, status, err) {
+                alert("Something went wrong");
+                }
+            });
+        });
+
+        function show_friends() {
+            document.getElementById("myDropdown").classList.toggle("show");
+            document.getElementById("right-title").classList.toggle("pShow");
+            document.getElementById("right-review").classList.toggle("pShow");
+        };
+
+        function show_review(friend_id) {
+            document.getElementById("myDropdown").classList.toggle("show");
+            document.getElementById("myInput").setAttribute("value", "@"+friend_id);
+            document.getElementById("right-title").classList.toggle("pShow");
+            document.getElementById("right-review").classList.toggle("pShow");
+        }
+
+    </script>
+</body>
+{% endblock content %}

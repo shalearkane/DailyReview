@@ -29,7 +29,7 @@
     background: linear-gradient(rgba(199, 191, 180, 0.1),
             rgba(199, 191, 180, 0.2));
     height: 70vh;
-    overflow-y: scroll;
+    overflow-y: auto;
     padding-bottom: 2rem;
     position: relative;
 }
@@ -147,7 +147,7 @@
     border-top: 0.2rem solid rgb(55, 42, 19);
     border-left: 0.4rem solid rgb(55, 42, 19);
     position: relative;
-    left: 40.25%;
+    left: 40.5%;
 }
 
 .no-review {
@@ -170,12 +170,12 @@
 
 @media screen and (max-width: 1400px) {
     .semicircle {
-        left: 38.7%;
+        left: 39%;
     }
 }
 
 @media screen and (max-width: 1200px) {
     .semicircle {
-        left: 36.5%;
+        left: 36.9%;
     }
 }
