@@ -31,22 +31,21 @@
   <body>
     <nav class="navbar navbar-expand-lg bg-light fixed-top">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/">
           <img src="{% static 'images/logo.png' %}" style="width: 2rem">
         </a>
-        <a class="navbar-brand" href="#">Review Your Day</a>
+        <a class="navbar-brand" href="/">Review Your Day</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <div class="navbar-nav" style="margin-right: auto !important">
-            <a class="nav-link" href="/" id="nav1" style="padding:1rem">Home</a>
             {% if user.is_authenticated %}
-              <a class="nav-link" href="/review/my" id="nav2" style="padding:1rem">Review your reviews</a>
+              <a class="nav-link" href="{% url 'personal-feed' %}" id="nav2" style="padding:1rem">Review your reviews</a>
             {% endif %}
-            <a class="nav-link" href="/review" id="nav3" style="padding:1rem">Public Reviews</a>
+            <a class="nav-link" href="{% url 'public-feed' %}" id="nav3" style="padding:1rem">Public Reviews</a>
             {% if user.is_authenticated %}
-              <a class="nav-link" href="/friends" id="nav4" style="padding:1rem">Connect</a>
+              <a class="nav-link" href="{% url 'my-friends' %}" id="nav4" style="padding:1rem">Connect</a>
             {% endif %}
           </div>
           <form class="d-flex" role="button">
