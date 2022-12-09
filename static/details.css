@@ -191,6 +191,7 @@ body {
     border-radius: 0.8rem;
     margin: 0rem 0.5rem;
     border: 0px;
+    text-decoration: none;
 }
 
 #edit-button {

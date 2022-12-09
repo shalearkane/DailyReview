@@ -1,9 +1,6 @@
 Make EditReview and DeleteReview workable
 Also add authentication to all views
-Remove edit buttons and personal thoughts for other users
 Work on Splitview
-Make search work on friends view //
 LoremIpsum on landing page
-Navigaton bar //
-Add a button on friends page to go to requests page //
 dropdown... no admin
+make a view for deleting a review

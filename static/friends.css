@@ -103,7 +103,7 @@
     
 }
 
-.dropdown {
+#mainDropDown {
     margin: 1rem 4rem;
     /* transition: 0.3s;
     transition-timing-function: ease-out; */

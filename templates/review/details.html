@@ -26,23 +26,27 @@
                     {{ review.text }}
                 </div>
             </div>
-            <div class="div">
-                <button class="button2" onclick="slide2()">Personal Thoughts</button>
-            </div>
-            <div class="div">
-                <button class="button1" onclick="slide1()">View Review</button>
-            </div>
-            <div class="personal-thoughts">
-                <div>Personal Thoughts</div>
-                <div>
-                    {{ review.personal_thoughts }}
+            {% if user.username == review.user.username %}
+                <div class="div">
+                    <button class="button2" onclick="slide2()">Personal Thoughts</button>
                 </div>
+                <div class="div">
+                    <button class="button1" onclick="slide1()">View Review</button>
+                </div>
+                <div class="personal-thoughts">
+                    <div>Personal Thoughts</div>
+                    <div>
+                        {{ review.personal_thoughts }}
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+        {% if user.username == review.user.username %}
+            <div class="edit-delete">
+                <a id="edit-button" href="{% url 'edit-review' pk=review.id %}" class="button">Edit Review</a>
+                <a id="delete-button" href="" onclick="activate(this.id)" class="button">Delete Review</a>
             </div>
-        </div>
-        <div class="edit-delete">
-            <button id="edit-button" onclick="activate(this.id)" class="button">Edit Review</button>
-            <button id="delete-button" onclick="activate(this.id)" class="button">Delete Review</button>
-        </div>
+        {% endif %}
         <script>
             function slide1() {
                 document.getElementById("review-thought").classList.remove("slide2");
