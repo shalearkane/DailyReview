@@ -16,6 +16,6 @@ urlpatterns = [
     path(
         "compare/",
         TemplateView.as_view(template_name="review/compare.html"),
-        name="split-view",
+        name="compare",
     ),
 ]

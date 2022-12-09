@@ -22,6 +22,22 @@ class MyFriendsView(ListView):
         return queryset
 
 
+def MyFriendsListView(request):
+    if request.method == "GET":
+        friend_ids = (
+            Friendship.objects.filter(from_user=request.user)
+            .order_by("-created")
+            .values_list("to_user_id", flat=True)
+        )
+
+        friends = User.objects.filter(id__in=friend_ids).values(
+            "id", "username", "email", "first_name", "last_name"
+        )
+
+        response = json.dumps(list(friends))
+        return JsonResponse(response, safe=False)
+
+
 def DiscoverFriendsView(request):
     if request.method == "GET":
         friend_ids = Friendship.objects.filter(from_user=request.user).values_list(
