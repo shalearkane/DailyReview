@@ -61,7 +61,7 @@
                                 `
                                 <div class="friend">
                                     <div><img src="{%static 'images/sample_friend.jpg' %}"></div>
-                                    <div><p>${value.first_name} ${value.last_name}</p><p>@${value.username}</p></div>
+                                    <div class="name-username"><p>${value.first_name} ${value.last_name}</p><p>@${value.username}</p></div>
                                     <div><button value="${value.id}" class="send-request" id="send-${value.id}" onclick="activate(${value.id})">Add Friend</button></div>
                                 </div>
 
@@ -103,6 +103,22 @@
 
             document.getElementById("nav4").classList.add('active');
 
+            function filterFunction() {
+                var input, filter, i;
+                input = document.getElementById("myInput");
+                filter = input.value.toUpperCase();
+                div = document.getElementById("myDropdown");
+                node_list = div.getElementsByClassName("friend")
+                friend_node_list = div.getElementsByClassName("name-username");
+                for (i = 0; i < friend_node_list.length; i++) {
+                    txtValue = friend_node_list[i].textContent;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        node_list[i].style.display = "";
+                    } else {
+                        node_list[i].style.display = "none";
+                    }
+                }
+              };
             
 
         </script>
