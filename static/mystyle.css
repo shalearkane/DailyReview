@@ -8,7 +8,7 @@ body {
     overflow-y: auto;
 }
 
-nav {
+/* nav {
     background-color: rgba(223, 233, 237, 0.4);
     border-radius: 0.4rem;
     margin: 0.5rem;
@@ -52,7 +52,7 @@ input {
     --bs-btn-active-bg: rgb(21, 21, 21);
     --bs-btn-active-border-color: rgb(21, 21, 21);
     --bs-btn-active-color: rgb(183, 182, 180);
-}
+} */
 
 /* width */
 ::-webkit-scrollbar {

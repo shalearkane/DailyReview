@@ -10,6 +10,10 @@
             <div class="welcome">
                 <p>Welcome {{ user.first_name }}!</p>
             </div>
+            <div class="write-compare">
+                <a href="review/write"><button>Sum up Your Day</button></a>
+                <a href=""><button>Compare yourself with others</button></a>
+            </div>
         {% else %}
             <a href="{% provider_login_url 'google' %}"
                style="text-decoration: none">
