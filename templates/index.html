@@ -8,7 +8,7 @@
     <body>
         {% if user.is_authenticated %}
             <div class="welcome">
-                <p>Welcome {{ user.first_name }} {{ user.last_name }}!</p>
+                <p>Welcome {{ user.first_name }}!</p>
             </div>
         {% else %}
             <a href="{% provider_login_url 'google' %}"
