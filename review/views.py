@@ -48,6 +48,12 @@ class Write(CreateView):
             return redirect("edit-review", pk=review.pk)
         return super().get(request, *args, **kwargs)
 
+    def get_form(self, form_class=None):
+        form = super(Write, self).get_form(form_class)
+        form.fields["personal_thoughts"].required = False
+        form.fields["visibility"].required = True
+        return form
+
     def form_valid(self, form):
         form.instance.user = self.request.user
         form.save()

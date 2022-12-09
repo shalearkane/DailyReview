@@ -28,7 +28,7 @@ class Review(models.Model):
 
     title = models.CharField(max_length=255, default="Today's Review")
     text = models.TextField()
-    personal_thoughts = models.TextField()
+    personal_thoughts = models.TextField(blank=True)
     updated = models.DateTimeField(auto_now=True)
 
     class Meta:
