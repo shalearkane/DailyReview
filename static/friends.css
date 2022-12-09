@@ -69,9 +69,14 @@
     width: 9rem;
 }
 
+.card-body {
+    padding-top: 0.5rem;
+}
+
 .card-title {
-    line-height: 0.4rem;
+    line-height: 1.2rem;
     color: white;
+    margin-bottom: 0.2rem;
 }
 
 .card-text {

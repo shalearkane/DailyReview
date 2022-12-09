@@ -1,0 +1,146 @@
+body {
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: 0vh;
+  animation: swipe-up 0.8s ease-out 0s 1;
+}
+
+@keyframes swipe-up {
+  from {
+    top: 50vh;
+  }
+  top {
+    top: 0vh;
+  }
+}
+
+.item1 {
+  align-self: center;
+  font-size: 1.8rem;
+  color: rgb(212, 220, 226);
+  text-shadow: 2px 2px 8px black;
+  height: 15vh;
+  line-height: 15vh;
+}
+
+.item2 {
+  background: linear-gradient(
+    rgba(199, 191, 180, 0.1),
+    rgba(199, 191, 180, 0.2)
+  );
+  max-height: 70vh;
+  min-height: min-content;
+  overflow-y: auto;
+  position: relative;
+  width: 70vw;
+  align-self: center;
+}
+
+.requests {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  align-items: center;
+  justify-content: center;
+  justify-items: end;
+  row-gap: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.username-date {
+  display: flex;
+  flex-direction: row;
+  width: max-content;
+  /* height: 4rem; */
+  padding: 0.5rem 1rem;
+  border-radius: 0.7rem;
+  box-shadow: 3px 3px 9px -3px black;
+  /* padding: 1rem; */
+}
+
+.username-date div img {
+  width: 2.5rem;
+  border-radius: 10rem;
+  float: left;
+  /* margin-top: 0.2rem; */
+  margin-right: 1rem;
+}
+
+.username-date div p:first-child {
+  margin-bottom: 0;
+  color: rgb(255, 255, 255);
+}
+
+.username-date div p:last-child {
+  color: #ddd;
+  font-size: 0.8rem;
+  margin-bottom: 0;
+}
+
+.accept-reject {
+  /* margin: 1.5rem; */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-left: 3rem;
+}
+
+.button {
+  background-color: transparent;
+  padding: 0.3rem 1rem;
+  border-radius: 0.8rem;
+  margin: 0rem 0.5rem;
+  transition: 0.15s ease-out;
+  font-size: 1.2rem;
+}
+
+.accept {
+  color: rgb(167, 147, 111);
+  border: 3px solid rgb(130, 109, 73);
+}
+
+.reject {
+  color: rgb(196, 51, 22);
+  border: 3px solid rgb(151, 28, 4);
+}
+
+.accept:hover {
+  transform: scale(1.02);
+  background-color: rgb(130, 109, 73);
+  color: #ddd;
+}
+
+.reject:hover {
+  transform: scale(1.02);
+  background-color: rgb(151, 28, 4);
+  color: #ddd;
+}
+
+.accept:active {
+  transform: scale(1);
+  background-color: rgb(107, 87, 52);
+}
+
+.reject:active {
+  transform: scale(1);
+  background-color: rgb(104, 19, 2);
+}
+
+.accepted {
+  background-color: rgb(130, 109, 73);
+  border: 2px solid rgb(130, 109, 73);
+  color: #ddd;
+  transform: scale(1.02);
+}
+
+.rejected {
+  background-color: rgb(151, 28, 4);
+  border: 2px solid rgb(151, 28, 4);
+  color: #ddd;
+  transform: scale(1.02);
+}

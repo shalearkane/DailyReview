@@ -47,8 +47,9 @@
 }
 
 .username-date {
+    display: flex;
+    flex-direction: row;
     width: 18rem;
-    height: 4rem;
     padding: 0.5rem 1rem;
     border-radius: 0.7rem;
     box-shadow: 3px 3px 9px -3px black;
@@ -59,7 +60,6 @@
     width: 2.5rem;
     border-radius: 10rem;
     float: left;
-    margin-top: 0.2rem;
     margin-right: 1rem;
 }
 
@@ -71,6 +71,7 @@
 .username-date div p:last-child {
     color: #ddd;
     font-size: 0.8rem;
+    margin-bottom: 0;
 }
 
 .review-title {

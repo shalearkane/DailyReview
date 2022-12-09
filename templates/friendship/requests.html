@@ -2,37 +2,44 @@
 {% load static %}
 {% load socialaccount %}
 {% block content %}
-    <div class="d-flex align-items-center justify-content-center h-100">
-        <div class="card" style="width: 50%;align: center;">
-            <div class="card-body">
-                <h5 class="card-title">Your Friend Requests</h5>
-                <ul class="list-group">
-                    {% for request in friend_requests %}
-                        <li id="li-{{ request.id }}" class="list-group-item">
-                            <div class="d-flex flex-row bd-highlight align-items-center">
-                                <div class="flex-fill align-self-center">{{ request.from_user.username }}</div>
-                                <div class="align-self-center">
-                                    <button id="accept-{{ request.id }}"
-                                            type="button"
-                                            class="btn btn-success"
-                                            value="{{ request.id }}">Accept</button>
-                                </div>
-                                <div class="align-self-center">
-                                    <button id="reject-{{ request.id }}"
-                                            type="button"
-                                            class="btn btn-danger"
-                                            value="{{ request.id }}">Reject</button>
-                                </div>
-                            </div>
-                        </li>
-                    {% endfor %}
-                </ul>
+<head>
+    <link rel="stylesheet" href="{% static 'requests.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="item1">Your Friend Requests</div>
+        <div class="item2">
+            <div class="requests">
+                {% for request in friend_requests %}
+                    <div class="username-date">
+                        <div>
+                            <img src="{{ request.from_user.socialaccount_set.all.0.get_avatar_url }}"
+                                alt="avatar">
+                        </div>
+                        <div>
+                            <p>{{ request.from_user.first_name }} {{ request.from_user.last_name }}</p>
+                            <p>@{{ request.from_user.username }}</p>
+                        </div>
+                    </div>
+                    <div class="accept-reject">
+                        <button id="accept-{{ request.id }}"
+                                type="button"
+                                value="{{ request.id }}"
+                                class="accept button">Accept</button>
+
+                        <button id="reject-{{ request.id }}"
+                                type="button"
+                                value="{{ request.id }}"
+                                class="reject button">Reject</button>
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </div>
+</body>
     <script>
         $(document).ready(function(){
-            $(".btn-success").button().click(function(){
+            $(".accept").button().click(function(){
                 var pk = $(this).val()
                 var proto_url = '{% url 'process-friendship-request' pk=0 %}'
                 var url = proto_url.substr(0, proto_url.length - 1) + pk
@@ -46,12 +53,14 @@
                     success: function(data, status, xhr) {
                         $(`#reject-${pk}`).remove();
                         $(`#accept-${pk}`).text("Accepted");
-                        $(`#accept-${pk}`).addClass('disabled');
+                        $(`#accept-${pk}`).toggleClass("accepted");
+                        $(`#accept-${pk}`).attr('disabled', "");
+                        $(`#accept-${pk}`).removeClass("accept");
                     }
                 })
             });
 
-            $(".btn-danger").button().click(function(){
+            $(".reject").button().click(function(){
                 var pk = $(this).val()
                 var proto_url = '{% url 'process-friendship-request' pk=0 %}'
                 var url = proto_url.substr(0, proto_url.length - 1) + pk
@@ -65,7 +74,9 @@
                     success: function(data, status, xhr) {
                         $(`#accept-${pk}`).remove();
                         $(`#reject-${pk}`).text("Rejected");
-                        $(`#reject-${pk}`).addClass('disabled');
+                        $(`#reject-${pk}`).toggleClass("rejected");
+                        $(`#reject-${pk}`).attr('disabled', "");
+                        $(`#reject-${pk}`).removeClass("reject");
                     }
                 })
             });
