@@ -3,6 +3,7 @@
 {% block content %}
     <head>
         <link rel="stylesheet" href="{% static 'feed.css' %}">
+        <title>Your Feed</title>
     </head>
     <body>
         <div class="container">
@@ -13,7 +14,7 @@
                     <div class="reviews">
                         {% for review in review_list %}
                             <div class="review">
-                                <div class="username-date" style="">
+                                <div class="username-date" style="justify-content:flex-end">
                                     <div>
                                         <p style="font-size: 1.2rem;
                                                   color: rgb(183, 182, 180);
@@ -54,7 +55,9 @@
         const boxlist = document.querySelectorAll('.rotate');
           boxlist.forEach((el) => {
             observer.observe(el);
-        })
+        });
+
+        document.getElementById("nav2").classList.add('active');
         </script>
     </body>
 {% endblock content %}

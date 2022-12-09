@@ -237,3 +237,29 @@
     from {transform: translateY(10rem);}
     top {transform: translateY(0rem);}
 }
+
+#requests button {
+    background-color: rgb(115, 90, 44);
+    margin-top: 1rem;
+    height: 3rem;
+    border-radius: 0.4rem;
+    color: rgb(244, 239, 231);
+    padding: 0rem 1rem;
+    border: 2px solid rgb(93, 71, 29);
+    transition: 0.15s;
+    transition-timing-function: ease-out;
+    
+}
+
+#requests button:hover {
+    background-color: rgb(93, 71, 29);
+    border: 2px solid rgb(93, 71, 29);
+    color: #ddd;
+    transform: scale(1.02);
+}
+
+#requests button:active {
+    background-color: rgb(56, 41, 13);
+    border: 2px solid rgb(56, 41, 13);
+    transform: scale(1);
+}

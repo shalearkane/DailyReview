@@ -4,6 +4,7 @@
 {% block content %}
 <head>
     <link rel="stylesheet" href="{% static 'requests.css' %}">
+    <title>Friend Requests</title>
 </head>
 <body>
     <div class="container">
@@ -80,6 +81,8 @@
                     }
                 })
             });
-        })
+        });
+
+        document.getElementById("nav4").classList.add('active');
     </script>
 {% endblock content %}

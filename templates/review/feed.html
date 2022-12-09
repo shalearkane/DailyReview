@@ -3,6 +3,7 @@
 {% block content %}
     <head>
         <link rel="stylesheet" href="{% static 'feed.css' %}">
+        <title>Personal Feed</title>
     </head>
     <body>
         <div class="container">
@@ -57,7 +58,9 @@
         const boxlist = document.querySelectorAll('.rotate');
           boxlist.forEach((el) => {
             observer.observe(el);
-        })
+        });
+
+        document.getElementById("nav3").classList.add('active');
         </script>
     </body>
 {% endblock content %}
