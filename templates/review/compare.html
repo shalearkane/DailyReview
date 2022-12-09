@@ -10,7 +10,10 @@
         <div class="item1">Compare your reviews with others</div>
         <div class="item2">
             <div class="select-date top">
-                Select Date:
+                <form>
+                    <label for="Date">Date:</label>
+                    <input type="date" id="date" name="date">
+                  </form>
             </div>
             <div class="select-friend top">
                 <input onclick="show_friends()"
@@ -61,6 +64,10 @@
                 }
             });
         });
+
+        $("#date").change(function() {
+            console.log($("#date").val())
+        })
 
         function show_friends() {
             document.getElementById("myDropdown").classList.toggle("show");

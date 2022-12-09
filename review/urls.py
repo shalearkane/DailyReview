@@ -1,5 +1,5 @@
 from django.urls import path
-
+from django.views.generic import TemplateView
 from . import views
 
 urlpatterns = [
@@ -12,5 +12,10 @@ urlpatterns = [
         "get/<int:user_id>/<int:year>/<int:month>/<int:day>/",
         views.ReviewFromDateView.as_view(),
         name="get-review-from-date",
+    ),
+    path(
+        "compare/",
+        TemplateView.as_view(template_name="review/compare.html"),
+        name="split-view",
     ),
 ]
