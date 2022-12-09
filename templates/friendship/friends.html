@@ -4,6 +4,7 @@
 {% block content %}
     <head>
         <link rel="stylesheet" href="{% static 'friends.css' %}">
+        <title>Friends Zone</title>
     </head>
     <body>
         <div class="container">
@@ -41,6 +42,9 @@
                             <div id="myDropdown" class="dropdown-content"></div>
                         </div>
                     </div>
+                    <div class="three" id="requests">
+                        <a href="/friends/requests"><button>Friend Requests</button></a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -75,7 +79,8 @@
                 document.getElementById("connect").classList.toggle("shift-connect");
                 document.getElementById("mainDropDown").classList.toggle("shift-dropdown");
                 document.getElementById("myDropdown").classList.toggle("show");
-            }
+                document.getElementById("requests").classList.toggle("shift-connect");
+            };
 
             function activate(user_id){
                 console.log("something is happening")
@@ -95,6 +100,8 @@
                     }
                 })
             };
+
+            document.getElementById("nav4").classList.add('active');
         </script>
     </body>
 {% endblock content %}

@@ -3,6 +3,7 @@
 {% load socialaccount %}
 {% block content %}
     <head>
+        <title>Review Your Day</title>
         <link rel="stylesheet" href="{% static 'index.css' %}">
     </head>
     <body>
@@ -45,5 +46,9 @@
                 </div>
             </div>
         </div>
+
+        <script>
+            document.getElementById("nav1").classList.add('active');
+        </script>
     </body>
 {% endblock content %}

@@ -26,12 +26,10 @@
           href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap">
-    {% block title %}
-      <title>Review Your Day</title>
-    {% endblock title %}
+    <link rel="icon" type="image/x-icon" href="{% static '/images/favicon.png' %}">
   </head>
   <body>
-    <nav class="navbar fixed-top navbar-expand-lg bg-light" style="position:relative">
+    <nav class="navbar navbar-expand-lg bg-light fixed-top">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">
           <img src="{% static 'images/logo.png' %}" style="width: 2rem">
@@ -42,18 +40,30 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <div class="navbar-nav" style="margin-right: auto !important">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-            <a class="nav-link" href="#">Review your reviews</a>
-            <a class="nav-link" href="#">Public Reviews</a>
-            <a class="nav-link" href="#">Compare your reviews with others</a>
-            <a class="nav-link" href="#">Connect</a>
+            <a class="nav-link" href="/" id="nav1" style="padding:1rem">Home</a>
+            {% if user.is_authenticated %}
+              <a class="nav-link" href="/review/my" id="nav2" style="padding:1rem">Review your reviews</a>
+            {% endif %}
+            <a class="nav-link" href="/review" id="nav3" style="padding:1rem">Public Reviews</a>
+            {% if user.is_authenticated %}
+              <a class="nav-link" href="/friends" id="nav4" style="padding:1rem">Connect</a>
+            {% endif %}
           </div>
           <form class="d-flex" role="button">
-            <button class="btn btn-outline-success" type="submit">Search</button>
+            {% if user.is_authenticated %}
+              <a class="btn btn-info align-middle"
+                href="{% url 'logout' %}"
+                role="button">Logout</a>
+            {% else %}
+              <a class="btn btn-info align-middle"
+                href="{% provider_login_url 'google' %}"
+                role="button">Login</a>
+            {% endif %}
           </form>
         </div>
       </div>
     </nav>
+    <div class="nav-behind"></div>
     {% block content %}
     {% endblock content %}
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>

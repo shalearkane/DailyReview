@@ -8,7 +8,7 @@ body {
     overflow-y: auto;
 }
 
-/* nav {
+nav {
     background-color: rgba(223, 233, 237, 0.4);
     border-radius: 0.4rem;
     margin: 0.5rem;
@@ -17,7 +17,7 @@ body {
 
 .navbar-brand {
     color:rgb(42, 41, 41);
-    padding: 1rem;
+    /* padding: 1rem; */
     font-size: 1rem;
     font-weight: bold;
 }
@@ -37,22 +37,38 @@ input {
     top: 0.5rem;
     height: 2rem;
     padding-top: 0.2rem;
-    color: rgb(183, 182, 180);
-    box-shadow: 0px 0px 10px 1px rgb(130, 116, 75);
+    color: rgb(234, 232, 230);
+    transition: 0.3s ease-out;
+    /* box-shadow: 0px 0px 10px 1px rgb(130, 116, 75); */
 }
 
 .d-flex > a:hover {
     background-color: rgb(42, 41, 41);
     border-color: rgb(42, 41, 41);
-    color: rgb(183, 182, 180);
-    box-shadow: 0px 0px 10px 1px rgb(130, 116, 75);
+    color: rgb(233, 233, 233);
+    transform: scale(1.02);
+    /* box-shadow: 0px 0px 10px 1px rgb(130, 116, 75); */
+}
+
+/* .d-flex > a:focus {
+    background-color: rgb(21, 21, 21);
+    border-color: rgb(21, 21, 21);
+    color: rgb(232, 232, 232);
+    transform: scale(1);   
+} */
+
+.d-flex > a:active {
+    background-color: rgb(21, 21, 21);
+    border-color: rgb(21, 21, 21);
+    color: rgb(232, 232, 232);
+    transform: scale(1);   
 }
 
 .btn-info {
     --bs-btn-active-bg: rgb(21, 21, 21);
     --bs-btn-active-border-color: rgb(21, 21, 21);
-    --bs-btn-active-color: rgb(183, 182, 180);
-} */
+    --bs-btn-active-color: rgb(232, 232, 232);
+}
 
 /* width */
 ::-webkit-scrollbar {
@@ -69,4 +85,8 @@ input {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+.nav-behind {
+    height: 4rem;
 }
