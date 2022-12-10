@@ -86,10 +86,6 @@ input {
     height: 4rem;
 }
 
-.d-flex p {
-
-}
-
 .d-flex img {
     width: 2rem;
 }
@@ -107,6 +103,7 @@ input {
 .dropdown button img {
     border-radius: 10rem;
     margin: 0;
+    border: 1px solid rgba(0, 0, 0, 0.529);
 }
 
 .dropdown button p {
@@ -130,4 +127,6 @@ input {
 
 .dropdown-menu {
     --bs-dropdown-link-active-bg: #9ea6ae;
+    --bs-dropdown-min-width: 0;
+    width: 100% !important;
 }
