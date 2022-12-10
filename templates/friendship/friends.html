@@ -60,7 +60,7 @@
                             $dropdown.append(
                                 `
                                 <div class="friend">
-                                    <div><img src="{%static 'images/sample_friend.jpg' %}"></div>
+                                    <div><img src="${value.socialaccount__extra_data.picture}"></div>
                                     <div class="name-username"><p>${value.first_name} ${value.last_name}</p><p>@${value.username}</p></div>
                                     <div><button value="${value.id}" class="send-request" id="send-${value.id}" onclick="activate(${value.id})">Add Friend</button></div>
                                 </div>
@@ -119,7 +119,7 @@
                     }
                 }
               };
-            
+
 
         </script>
     </body>

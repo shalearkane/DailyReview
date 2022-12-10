@@ -31,7 +31,12 @@ def MyFriendsListView(request):
         )
 
         friends = User.objects.filter(id__in=friend_ids).values(
-            "id", "username", "email", "first_name", "last_name"
+            "id",
+            "username",
+            "email",
+            "first_name",
+            "last_name",
+            "socialaccount__extra_data",
         )
 
         response = json.dumps(list(friends))
@@ -54,7 +59,15 @@ def DiscoverFriendsView(request):
         strangers = (
             User.objects.all()
             .exclude(id__in=friend_ids_list)
-            .values("id", "username", "email", "first_name", "last_name")
+            .exclude(is_staff=True)
+            .values(
+                "id",
+                "username",
+                "email",
+                "first_name",
+                "last_name",
+                "socialaccount__extra_data",
+            )
         )
         response = json.dumps(list(strangers))
         return JsonResponse(response, safe=False)

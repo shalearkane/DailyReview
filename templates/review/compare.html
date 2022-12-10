@@ -16,9 +16,6 @@
                     </form>
                 </div>
                 <div class="select-friend top">
-                    {% comment %} <select class="form-select" name="friend" id="select-friend">
-                        <option value="-1" >None</option>
-                    </select> {% endcomment %}
                     <input onclick="show_friends()"
                         type="text"
                         placeholder="Compare with..."
@@ -39,15 +36,6 @@
             </div>
         </div>
         <script>
-            {% comment %} function selectRefresh() {
-                $('#myInput').select2({
-                  tags: true,
-                  placeholder: "Select an Option",
-                  allowClear: true,
-                  width: '100%'
-                });
-              } {% endcomment %}
-
             function setUserReview() {
                 var date = $("#date").val()
                 var proto_url = '{% url 'get-review-from-date' user_id=0 year=0 month=0 day=0 %}'
@@ -114,7 +102,7 @@
                             ` {% endcomment %}
                             `
                             <div id=${value.id} class="friend" onclick="show_review('${value.id}', '${value.username}')">
-                                <div><img src="{%static 'images/sample_friend.jpg' %}"></div>
+                                <div><img src="${value.socialaccount__extra_data.picture}"></div>
                                 <div class="name-username"><p>${value.first_name} ${value.last_name}</p><p>@${value.username}</p></div>
                             </div>
                             `
