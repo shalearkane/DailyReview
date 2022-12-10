@@ -8,7 +8,7 @@
     <body>
         <div class="img-user-date">
             <div class="image">
-                <img src="{% static 'images/sample_friend.jpg' %}" alt="">
+                <img src="{{ review.user.socialaccount_set.all.0.get_avatar_url }}" alt="">
             </div>
             <div class="name-username">
                 <p class="name">{{ review.user.first_name }} {{ review.user.last_name }}</p>
