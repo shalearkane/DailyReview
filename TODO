@@ -1,7 +1,5 @@
-Make EditReview and DeleteReview workable
+Make DeleteReview workable
 Also add authentication to all views
 Work on Splitview
 LoremIpsum on landing page
-dropdown... no admin
 make a view for deleting a review
-use avatar instead of sample friend.png
