@@ -43,6 +43,17 @@
     /* align-self: center; */
 }
 
+.date-form {
+    margin-bottom: 0;
+}
+
+#date::-webkit-datetime-edit {line-height: 1rem;}
+#date::-webkit-datetime-edit-text { color: rgb(226, 226, 226); }
+#date::-webkit-datetime-edit-month-field { color: rgb(226, 226, 226); }
+#date::-webkit-datetime-edit-day-field { color: rgb(226, 226, 226); }
+#date::-webkit-datetime-edit-year-field { color: rgb(226, 226, 226); }
+/* #date::-webkit-inner-spin-button { display: none; } */
+
 .select-friend {
     position: relative;
 }
@@ -132,7 +143,7 @@
     margin: 0;
     margin-left:1rem;
     text-align: left;
-    width: 90%;
+    /* width: 90%; */
 }
 
 .friend div p:last-child {

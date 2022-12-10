@@ -10,15 +10,21 @@
             <div class="item1">Compare your reviews with others</div>
             <div class="item2">
                 <div class="select-date top">
-                    <form>
+                    <form class="date-form">
                         <label for="Date">Date:</label>
                         <input type="date" id="date" name="date">
                     </form>
                 </div>
                 <div class="select-friend top">
-                    <select class="form-select" name="friend" id="select-friend">
+                    {% comment %} <select class="form-select" name="friend" id="select-friend">
                         <option value="-1" >None</option>
-                    </select>
+                    </select> {% endcomment %}
+                    <input onclick="show_friends()"
+                        type="text"
+                        placeholder="Compare with..."
+                        id="myInput"
+                        onkeyup="filterFunction()">
+                    <div id="myDropdown" class="dropdown-content"></div>
                 </div>
                 <div class="review-left bottom">
                     <p id="left-title"></p>
@@ -33,14 +39,14 @@
             </div>
         </div>
         <script>
-            function selectRefresh() {
-                $('.form-select').select2({
+            {% comment %} function selectRefresh() {
+                $('#myInput').select2({
                   tags: true,
                   placeholder: "Select an Option",
                   allowClear: true,
                   width: '100%'
                 });
-              }
+              } {% endcomment %}
 
             function setUserReview() {
                 var date = $("#date").val()
@@ -66,8 +72,8 @@
                 })
             }
 
-            function setFriendsReview() {
-                var friend_id = $("#select-friend").val()
+            function setFriendsReview(id) {
+                var friend_id = id
                 var proto_url = '{% url 'get-review-from-date' user_id=0 year=0 month=0 day=0 %}'
                 var date = $("#date").val()
                 var date_slug = date.replace(/-/g, "/")
@@ -96,19 +102,25 @@
                 url: '{% url 'my-friends-list' %}',
                 method: "GET",
                 success: function (data, status, xhr) {
-                    var $dropdown = $("#select-friend");
+                    var $dropdown = $("#myDropdown");
                     console.log(data)
                     data = JSON.parse(data)
                     console.log("this is happening")
                     console.log(data)
                     $.each(data, function(key, value) {
                         $dropdown.append(
-                            `
+                            {% comment %} `
                             <option value="${value.id}">${value.username}</option>
+                            ` {% endcomment %}
+                            `
+                            <div id=${value.id} class="friend" onclick="show_review('${value.id}', '${value.username}')">
+                                <div><img src="{%static 'images/sample_friend.jpg' %}"></div>
+                                <div class="name-username"><p>${value.first_name} ${value.last_name}</p><p>@${value.username}</p></div>
+                            </div>
                             `
                         );
                     });
-                    selectRefresh();
+                    {% comment %} selectRefresh(); {% endcomment %}
                 },
                 error: function (xhr, status, err) {
                     alert("You don't have any friends");
@@ -127,13 +139,13 @@
             setFriendsReview()
         })
 
-        $("#select-friend").change(function() {
+        function onChangeInput(id) {
             if ($("#date").val() === "") {
                 alert("Select date first")
             } else {
-                setFriendsReview()
+                setFriendsReview(id)
             }
-        })
+        };
 
         function show_friends() {
             document.getElementById("myDropdown").classList.toggle("show");
@@ -141,12 +153,34 @@
             document.getElementById("right-review").classList.toggle("pShow");
         };
 
-        function show_review(friend_id) {
-            document.getElementById("myDropdown").classList.toggle("show");
-            document.getElementById("myInput").setAttribute("value", "@"+friend_id);
-            document.getElementById("right-title").classList.toggle("pShow");
-            document.getElementById("right-review").classList.toggle("pShow");
-        }
+        function show_review(id, username) {
+            console.log("yo")
+            document.getElementById("myDropdown").classList.remove("show");
+            document.getElementById("myInput").value = "@"+username;
+            document.getElementById("right-title").classList.remove("pShow");
+            document.getElementById("right-review").classList.remove("pShow");
+            onChangeInput(id);
+        };
+
+        function filterFunction() {
+            document.getElementById("myDropdown").classList.add("show");
+            document.getElementById("right-title").classList.add("pShow");
+            document.getElementById("right-review").classList.add("pShow");
+            var input, filter, i;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            div = document.getElementById("myDropdown");
+            node_list = div.getElementsByClassName("friend")
+            friend_node_list = div.getElementsByClassName("name-username");
+            for (i = 0; i < friend_node_list.length; i++) {
+                txtValue = friend_node_list[i].textContent;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    node_list[i].style.display = "";
+                } else {
+                    node_list[i].style.display = "none";
+                }
+            }
+          };
 
         </script>
     </body>
