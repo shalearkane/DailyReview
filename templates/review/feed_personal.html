@@ -26,7 +26,12 @@
                                     <div class="inner">
                                         <div class="rotate">
                                             <p>{{ review.title }}</p>
-                                            <p>{{ review.text }}</p>
+                                            <zero-md>
+                                            <template>
+                                                <link rel="stylesheet" href="{% static 'markdown-retro.css' %}">
+                                            </template>
+                                            <script type="text/markdown">{{ review.text }}</script>
+                                            </zero-md>
                                         </div>
                                     </div>
                                 </a>

@@ -2,9 +2,7 @@
 {% load socialaccount %}
 <!DOCTYPE html>
 <html lang="en">
-  <title>
-    Daily Review
-  </title>
+  <title>Daily Review</title>
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -15,6 +13,7 @@
           rel="stylesheet"
           integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
           crossorigin="anonymous"/>
+    <script type="module" src="https://cdn.jsdelivr.net/gh/zerodevx/zero-md@2/dist/zero-md.min.js"></script>
     <link rel="stylesheet" href="{% static 'mystyle.css' %}">
     <link rel="icon"
           type="image/x-icon"
@@ -54,7 +53,10 @@
                  id="nav4"
                  style="padding:1rem">Connect</a>
             {% endif %}
-            <a class="nav-link" href="{% url "about-us" %}" id="nav5" style="padding:1rem">About Us</a>
+            <a class="nav-link"
+               href="{% url "about-us" %}"
+               id="nav5"
+               style="padding:1rem">About Us</a>
           </div>
           <form class="d-flex" role="button">
             {% if user.is_authenticated %}

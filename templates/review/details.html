@@ -22,7 +22,14 @@
         <div class="review-thought" id="review-thought">
             <div class="title-review">
                 <div class="title">{{ review.title }}</div>
-                <div class="review">{{ review.text }}</div>
+                <div class="review">
+                    <zero-md>
+                    <template>
+                        <link rel="stylesheet" href="{% static 'markdown-retro.css' %}">
+                    </template>
+                    <script type="text/markdown">{{ review.text }}</script>
+                    </zero-md>
+                </div>
             </div>
             {% if user.username == review.user.username %}
                 <div class="div">
@@ -70,7 +77,9 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-danger deleteButton">Yes, delete the review</button>
+                            <button type="button"
+                                    class="btn btn-danger deleteButton"
+                                    onclick="deleteReview()">Yes, delete the review</button>
                         </div>
                     </div>
                 </div>
@@ -87,21 +96,18 @@
                 document.getElementById("review-thought").classList.toggle("slide2");
             }
 
-            $(document).ready(function() {
-                $(".deleteButton").button().click(function() {
-                    console.log("buttonClick")
-                    $.ajax({
-                        url: '{% url 'delete-review' pk=review.id %}',
-                        method: "POST",
-                        data: {
-                            csrfmiddlewaretoken: '{{ csrf_token }}'
-                        },
-                        success: function() {
-                            window.location.href='{% url 'personal-feed' %}'
-                        }
-                    })
+            function deleteReview() {
+                $.ajax({
+                    url: '{% url 'delete-review' pk=review.id %}',
+                    method: "POST",
+                    data: {
+                        csrfmiddlewaretoken: '{{ csrf_token }}'
+                    },
+                    success: function() {
+                        window.location.href='{% url 'personal-feed' %}'
+                    }
                 })
-            })
+            }
         </script>
     </body>
 {% endblock content %}
