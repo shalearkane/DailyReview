@@ -22,9 +22,7 @@
         <div class="review-thought" id="review-thought">
             <div class="title-review">
                 <div class="title">{{ review.title }}</div>
-                <div class="review">
-                    {{ review.text }}
-                </div>
+                <div class="review">{{ review.text }}</div>
             </div>
             {% if user.username == review.user.username %}
                 <div class="div">
@@ -35,16 +33,47 @@
                 </div>
                 <div class="personal-thoughts">
                     <div>Personal Thoughts</div>
-                    <div>
-                        {{ review.personal_thoughts }}
-                    </div>
+                    <div>{{ review.personal_thoughts }}</div>
                 </div>
             {% endif %}
         </div>
         {% if user.username == review.user.username %}
             <div class="edit-delete">
-                <a id="edit-button" href="{% url 'edit-review' pk=review.id %}" class="button">Edit Review</a>
-                <a id="delete-button" href="" onclick="activate(this.id)" class="button">Delete Review</a>
+                <a id="edit-button"
+                   href="{% url 'edit-review' pk=review.id %}"
+                   class="button">Edit Review</a>
+                <a id="delete-button"
+                   href=""
+                   class="button"
+                   data-bs-toggle="modal"
+                   data-bs-target="#deleteReview">Delete Review</a>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade"
+                 id="deleteReview"
+                 tabindex="-1"
+                 aria-labelledby="deleteReviewModal"
+                 aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="deleteModalLabel">Delete</h5>
+                            <button type="button"
+                                    class="btn-close"
+                                    data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Do you really want to delete your review?
+                            <br>
+                            You won't be able to write a review for that day again. You can set visiblity to <b>Only Me</b> if you don't want others to see it.
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-danger deleteButton">Yes delete the review</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         {% endif %}
         <script>
@@ -57,6 +86,22 @@
                 document.getElementById("review-thought").classList.remove("slide1");
                 document.getElementById("review-thought").classList.toggle("slide2");
             }
+
+            $(document).ready(function() {
+                $(".deleteButton").button().click(function() {
+                    console.log("buttonClick")
+                    $.ajax({
+                        url: '{% url 'delete-review' pk=review.id %}',
+                        method: "POST",
+                        data: {
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                        },
+                        success: function() {
+                            window.location.href='{% url 'personal-feed' %}'
+                        }
+                    })
+                })
+            })
         </script>
     </body>
 {% endblock content %}

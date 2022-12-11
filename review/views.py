@@ -7,7 +7,7 @@ from django.db.models import Q
 from django.forms.models import model_to_dict
 from django.http import Http404, JsonResponse
 from django.shortcuts import get_object_or_404, redirect
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse_lazy
 from django.utils import timezone
 from django.views.generic.base import View
 from django.views.generic.dates import (
@@ -237,7 +237,7 @@ class Edit(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 class Delete(LoginRequiredMixin, UserPassesTestMixin, DeletionMixin, View):
     model = Review
-    success_url = reverse("personal-feed")
+    success_url = reverse_lazy("personal-feed")
 
     def test_func(self):
         return Review.objects.filter(
