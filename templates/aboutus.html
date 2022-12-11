@@ -2,46 +2,55 @@
 {% load static %}
 {% load socialaccount %}
 {% block content %}
-<head>
-    <title>Review Your Day</title>
-    <link rel="stylesheet" href="{% static 'aboutus.css' %}">
-</head>
-<body>
-    <div class="container">
-        <h2>The Digital Logbook</h2>
-        <div class="about-website">
-            <p>Are you looking for a place to track your daily activities and stay motivated?</p>
-            <p>Look no further! Our website is the perfect platform for sharing your experiences, setting goals, and staying on track. With our user-friendly interface, you can easily post daily reviews and see how you're doing over time. Plus, you can connect with friends and compare your progress, so you can see who's on track to reach their goals. And with our privacy settings, you can decide who can see your activities and who can't, so you can share as much or as little as you like. Join our community today and start reaching your goals!</p>
-        </div>
-
-        <h2>The faces behind</h2>
-
-        <div class="soumik">
-            <img class="him" src="{% static 'images/sample_friend.jpg' %}" alt="Soumik Dutta">
-            <div class="developer-content">
-                <p>Soumik Dutta</p>
-                <p>Write Something about u</p>
-                <div class="github-linkedin">
-                    <a href="https://github.com/shalearkane"><img src="{% static 'images/github.png' %}" alt="Github Profile"></a>
-                    <a href="https://www.linkedin.com/in/soumik-dutta-a8aab8222/"><img src="{% static 'images/linkedin.png' %}" alt="Linked In Profile"></a>
+    <head>
+        <title>Review Your Day</title>
+        <link rel="stylesheet" href="{% static 'aboutus.css' %}">
+    </head>
+    <body>
+        <div class="container">
+            <h2>The Digital Logbook</h2>
+            <div class="about-website">
+                <p>Are you looking for a place to track your daily activities and stay motivated?</p>
+                <p>
+                    Look no further! Our website is the perfect platform for sharing your experiences, setting goals, and staying on track. With our user-friendly interface, you can easily post daily reviews and see how you're doing over time. Plus, you can connect with friends and compare your progress, so you can see who's on track to reach their goals. And with our privacy settings, you can decide who can see your activities and who can't, so you can share as much or as little as you like. Join our community today and start reaching your goals!
+                </p>
+            </div>
+            <h2>The faces behind</h2>
+            <div class="soumik">
+                <img class="him"
+                     src="{% static 'images/soumik.jpg' %}"
+                     alt="Soumik Dutta">
+                <div class="developer-content">
+                    <p>Soumik Dutta</p>
+                    <p>Developer and Linux Evangelist 👨‍💻</p>
+                    <div class="github-linkedin">
+                        <a href="https://github.com/shalearkane">
+                            <img src="{% static 'images/github.png' %}" alt="Github Profile">
+                        </a>
+                        <a href="https://www.linkedin.com/in/soumik-dutta-a8aab8222/">
+                            <img src="{% static 'images/linkedin.png' %}" alt="Linked In Profile">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="somya">
+                <img class="her"
+                     src="{% static 'images/somya.jpg' %}"
+                     alt="Somya Bansal">
+                <div class="developer-content">
+                    <p>Somya Bansal</p>
+                    <p>Robo-didi and Weird AI</p>
+                    <div class="github-linkedin">
+                        <a href="https://github.com/Somya-Bansal159">
+                            <img src="{% static 'images/github.png' %}" alt="Github Profile">
+                        </a>
+                        <a href="https://www.linkedin.com/in/somya-bansal-73b041205/">
+                            <img src="{% static 'images/linkedin.png' %}" alt="Linked In Profile">
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <div class="somya">
-            <img class="her" src="{% static 'images/sample_friend.jpg' %}" alt="Somya Bansal">
-            <div class="developer-content">
-                <p>Somya Bansal</p>
-                <p>Write Something about me &#x1F31B;</p>
-                <div class="github-linkedin">
-                    <a href="https://github.com/Somya-Bansal159"><img src="{% static 'images/github.png' %}" alt="Github Profile"></a>
-                    <a href="https://www.linkedin.com/in/somya-bansal-73b041205/"><img src="{% static 'images/linkedin.png' %}" alt="Linked In Profile"></a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script>
-        document.getElementById("nav5").classList.add('active');
-    </script>
-</body>
+        <script>document.getElementById("nav5").classList.add('active');</script>
+    </body>
 {% endblock content %}
