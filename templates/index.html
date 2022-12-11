@@ -12,24 +12,30 @@
                 <p>Welcome {{ user.first_name }}!</p>
             </div>
             <div class="write-compare">
-                <a href="{% url 'write-review' %}"><button>Sum up Your Day</button></a>
-                <a href="{% url 'compare' %}"><button>Compare yourself with others</button></a>
+                <a href="{% url 'write-review' %}">
+                    <button>Sum up Your Day</button>
+                </a>
+                <a href="{% url 'compare' %}">
+                    <button>Compare yourself with others</button>
+                </a>
             </div>
         {% else %}
-        <div class="logged-out-view">
-            <p class="welcome-text">Join the community and compare your daily habits with like-minded people</p>
-            <a href="{% provider_login_url 'google' %}"
-               style="text-decoration: none">
-                <div class="google">
-                    <div>
-                        <img src="{% static 'images/google.png' %}" alt="GoogleLogo" class="google_img">
+            <div class="logged-out-view">
+                <p class="welcome-text">Join the community and compare your daily habits with like-minded people</p>
+                <a href="{% provider_login_url 'google' %}"
+                   style="text-decoration: none">
+                    <div class="google">
+                        <div>
+                            <img src="{% static 'images/google.png' %}"
+                                 alt="GoogleLogo"
+                                 class="google_img">
+                        </div>
+                        <div>
+                            <p class="google_text">Login With Google</p>
+                        </div>
                     </div>
-                    <div>
-                        <p class="google_text">Login With Google</p>
-                    </div>
-                </div>
-            </a>
-        </div>
+                </a>
+            </div>
         {% endif %}
         <div class="content">
             <div class="him flex-container">
@@ -49,9 +55,5 @@
                 </div>
             </div>
         </div>
-
-        <script>
-            document.getElementById("nav1").classList.add('active');
-        </script>
     </body>
 {% endblock content %}
