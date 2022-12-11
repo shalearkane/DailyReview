@@ -36,12 +36,17 @@
             </div>
         </div>
         <script>
-            function setUserReview() {
+            function getDateSlug() {
                 var date = $("#date").val()
-                var proto_url = '{% url 'get-review-from-date' user_id=0 year=0 month=0 day=0 %}'
                 var date_slug = date.replace(/-/g, "/")
+                return date_slug
+            }
+
+            function setUserReview() {
+                var date_slug = getDateSlug()
                 var user_id = '{{ user.id }}';
-                var url = proto_url.substr(0, proto_url.length - 8) + '{{ user.id }}/'+ date_slug
+                var proto_url = '{% url 'get-review-from-date' user_id=0 year=0 month=0 day=0 %}'
+                var url = proto_url.substr(0, proto_url.length - 7) + '{{ user.id }}/'+ date_slug
                 $.ajax({
                     url: url,
                     method: "GET",
@@ -62,10 +67,9 @@
 
             function setFriendsReview(id) {
                 var friend_id = id
+                var date_slug = getDateSlug()
                 var proto_url = '{% url 'get-review-from-date' user_id=0 year=0 month=0 day=0 %}'
-                var date = $("#date").val()
-                var date_slug = date.replace(/-/g, "/")
-                var url = proto_url.substr(0, proto_url.length - 8) + friend_id + "/" + date_slug
+                var url = proto_url.substr(0, proto_url.length - 7) + friend_id + "/" + date_slug
                 $.ajax({
                     url: url,
                     method: "GET",
@@ -86,15 +90,18 @@
             }
 
         function setFriendsList() {
+            var date_slug = getDateSlug()
+            var proto_url = '{% url 'get-friends-who-reviewed-on-date' year=0 month=0 day=0 %}'
+            var url = proto_url.substr(0, proto_url.length - 6) + date_slug
+            var $dropdown = $("#myDropdown");
+            var $input = $("#myInput");
+            $input.val(null);
+            $dropdown.empty()
             $.ajax({
-                url: '{% url 'my-friends-list' %}',
+                url: url,
                 method: "GET",
                 success: function (data, status, xhr) {
-                    var $dropdown = $("#myDropdown");
-                    console.log(data)
                     data = JSON.parse(data)
-                    console.log("this is happening")
-                    console.log(data)
                     $.each(data, function(key, value) {
                         $dropdown.append(
                             `
@@ -105,23 +112,27 @@
                             `
                         );
                     });
-                    {% comment %} selectRefresh(); {% endcomment %}
                 },
                 error: function (xhr, status, err) {
-                    alert("You don't have any friends");
+                    $('#right-title').text("")
+                    $('#right-review').text("")
                 }
             });
         }
 
         $(document).ready(function() {
-            setFriendsList();
             document.getElementById('date').valueAsDate = new Date();
-            setUserReview()
+            setUserReview();
+            setFriendsList();
         });
 
         $("#date").change(function() {
-            setUserReview()
-            setFriendsReview()
+            setUserReview();
+            setFriendsList();
+
+            // also clear the right side
+            $('#right-title').text("")
+            $('#right-review').text("")
         })
 
         function onChangeInput(id) {

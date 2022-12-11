@@ -9,9 +9,14 @@ urlpatterns = [
     path("write/", views.Write.as_view(), name="write-review"),
     path("edit/<int:pk>", views.Edit.as_view(), name="edit-review"),
     path(
-        "get/<int:user_id>/<int:year>/<int:month>/<int:day>/",
+        "get/<int:user_id>/<int:year>/<int:month>/<int:day>",
         views.ReviewFromDateView.as_view(),
         name="get-review-from-date",
+    ),
+    path(
+        "friends/<int:year>/<int:month>/<int:day>/",
+        views.FriendsWhoReviewedOnDateView.as_view(),
+        name="get-friends-who-reviewed-on-date",
     ),
     path(
         "compare/",

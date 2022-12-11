@@ -8,10 +8,16 @@ from django.http import Http404, JsonResponse
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.utils import timezone
-from django.views.generic.dates import BaseDateDetailView, _date_from_string
+from django.views.generic.dates import (
+    BaseDateDetailView,
+    _date_from_string,
+    BaseDayArchiveView,
+)
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic.list import ListView
+from django.contrib.auth.models import User
+
 
 from friendship.models import Friendship
 
@@ -45,7 +51,9 @@ class PublicFeed(ListView):
                 .order_by("-created")
                 .values_list("to_user_id", flat=True)
             )
-            queryset = Review.objects.filter(Q(user__in=friend_ids) | Q(visibility="EV")).order_by("-date")
+            queryset = Review.objects.filter(
+                Q(user__in=friend_ids) | Q(visibility="EV")
+            ).order_by("-date")
         return queryset
 
 
@@ -59,7 +67,9 @@ class DetailsView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
         if obj.user == self.request.user or obj.visibility == "EV":
             return True
         elif obj.visibility == "FR":
-            return Friendship.objects.filter(from_user=obj.user, to_user=self.request.user).exists()
+            return Friendship.objects.filter(
+                from_user=obj.user, to_user=self.request.user
+            ).exists()
         else:
             return False
 
@@ -125,6 +135,70 @@ class ReviewFromDateView(LoginRequiredMixin, BaseDateDetailView):
         return JsonResponse(response, safe=False)
 
 
+class FriendsWhoReviewedOnDateView(BaseDayArchiveView):
+    model = Review
+    date_field = "date"
+    month_format = "%m"
+
+    def get_queryset(self):
+        friend_ids = Friendship.objects.filter(from_user=self.request.user).values_list(
+            "to_user_id", flat=True
+        )
+        return self.model.objects.filter(user__in=friend_ids)
+
+    def get_dated_items(self):
+        """Return (date_list, items, extra_context) for this request."""
+        year = self.get_year()
+        month = self.get_month()
+        day = self.get_day()
+
+        date = _date_from_string(
+            year,
+            self.get_year_format(),
+            month,
+            self.get_month_format(),
+            day,
+            self.get_day_format(),
+        )
+
+        return self._get_dated_items(date)
+
+    def _get_dated_items(self, date):
+        """
+        Do the actual heavy lifting of getting the dated items; this accepts a
+        date object so that TodayArchiveView can be trivial.
+        """
+        lookup_kwargs = self._make_single_date_lookup(date)
+        qs = self.get_dated_queryset(**lookup_kwargs)
+
+        return (
+            None,
+            qs,
+            None,
+        )
+
+    def get_dated_queryset(self, **lookup):
+        """
+        Get a queryset properly filtered according to `allow_future` and any
+        extra lookup kwargs.
+        """
+        user_ids = self.get_queryset().filter(**lookup).values_list("user", flat=True)
+        qs = User.objects.filter(id__in=user_ids).values(
+            "id",
+            "username",
+            "email",
+            "first_name",
+            "last_name",
+            "socialaccount__extra_data",
+        )
+        return qs
+
+    def get(self, request, *args, **kwargs):
+        self.date_list, self.object_list, extra_context = self.get_dated_items()
+        response = json.dumps(list(self.object_list))
+        return JsonResponse(response, safe=False)
+
+
 class Write(LoginRequiredMixin, CreateView):
     model = Review
     template_name = "review/form.html"
@@ -156,4 +230,6 @@ class Edit(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     success_url = reverse_lazy("personal-feed")
 
     def test_func(self):
-        return self.model.objects.filter(pk=self.kwargs["pk"], user=self.request.user).exists()
+        return self.model.objects.filter(
+            pk=self.kwargs["pk"], user=self.request.user
+        ).exists()
