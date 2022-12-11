@@ -1,6 +1,8 @@
 import datetime
 import json
 
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.db.models import Q
 from django.forms.models import model_to_dict
 from django.http import Http404, JsonResponse
 from django.shortcuts import get_object_or_404, redirect
@@ -17,7 +19,7 @@ from .models import Review
 
 
 # Create your views here.
-class PersonalFeed(ListView):
+class PersonalFeed(LoginRequiredMixin, ListView):
     model = Review
     paginate_by: int = 10
     template_name: str = "review/feed_personal.html"
@@ -35,16 +37,34 @@ class PublicFeed(ListView):
     context_object_name = "review_list"
 
     def get_queryset(self):
-        queryset = Review.objects.filter().order_by("-date")
+        if not self.request.user.is_authenticated:
+            queryset = Review.objects.filter(visibility="EV").order_by("-date")
+        else:
+            friend_ids = (
+                Friendship.objects.filter(from_user=self.request.user)
+                .order_by("-created")
+                .values_list("to_user_id", flat=True)
+            )
+            queryset = Review.objects.filter(Q(user__in=friend_ids) | Q(visibility="EV")).order_by("-date")
         return queryset
 
 
-class DetailsView(DetailView):
+class DetailsView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
     model = Review
     template_name: str = "review/details.html"
 
+    def test_func(self):
+        obj: Review = self.get_object()
+        print(self.request.user.id)
+        if obj.user == self.request.user or obj.visibility == "EV":
+            return True
+        elif obj.visibility == "FR":
+            return Friendship.objects.filter(from_user=obj.user, to_user=self.request.user).exists()
+        else:
+            return False
 
-class ReviewFromDateView(BaseDateDetailView):
+
+class ReviewFromDateView(LoginRequiredMixin, BaseDateDetailView):
     model = Review
     date_field = "date"
     allow_future = False
@@ -105,7 +125,7 @@ class ReviewFromDateView(BaseDateDetailView):
         return JsonResponse(response, safe=False)
 
 
-class Write(CreateView):
+class Write(LoginRequiredMixin, CreateView):
     model = Review
     template_name = "review/form.html"
     fields = ["title", "text", "personal_thoughts", "visibility"]
@@ -129,8 +149,11 @@ class Write(CreateView):
         return super().form_valid(form)
 
 
-class Edit(UpdateView):
+class Edit(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Review
     template_name = "review/form.html"
     fields = ["title", "text", "personal_thoughts", "visibility"]
     success_url = reverse_lazy("personal-feed")
+
+    def test_func(self):
+        return self.model.objects.filter(pk=self.kwargs["pk"], user=self.request.user).exists()

@@ -97,9 +97,6 @@
                     console.log(data)
                     $.each(data, function(key, value) {
                         $dropdown.append(
-                            {% comment %} `
-                            <option value="${value.id}">${value.username}</option>
-                            ` {% endcomment %}
                             `
                             <div id=${value.id} class="friend" onclick="show_review('${value.id}', '${value.username}')">
                                 <div><img src="${value.socialaccount__extra_data.picture}"></div>
