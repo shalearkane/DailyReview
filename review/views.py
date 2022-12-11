@@ -2,22 +2,22 @@ import datetime
 import json
 
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.models import User
 from django.db.models import Q
 from django.forms.models import model_to_dict
 from django.http import Http404, JsonResponse
 from django.shortcuts import get_object_or_404, redirect
-from django.urls import reverse_lazy
+from django.urls import reverse, reverse_lazy
 from django.utils import timezone
+from django.views.generic.base import View
 from django.views.generic.dates import (
     BaseDateDetailView,
-    _date_from_string,
     BaseDayArchiveView,
+    _date_from_string,
 )
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, DeletionMixin, UpdateView
 from django.views.generic.list import ListView
-from django.contrib.auth.models import User
-
 
 from friendship.models import Friendship
 
@@ -233,3 +233,16 @@ class Edit(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         return self.model.objects.filter(
             pk=self.kwargs["pk"], user=self.request.user
         ).exists()
+
+
+class Delete(LoginRequiredMixin, UserPassesTestMixin, DeletionMixin, View):
+    model = Review
+    success_url = reverse("personal-feed")
+
+    def test_func(self):
+        return Review.objects.filter(
+            user=self.request.user, pk=self.kwargs["pk"]
+        ).exists()
+
+    def get_object(self):
+        return get_object_or_404(Review, pk=self.kwargs["pk"])
