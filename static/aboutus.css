@@ -7,12 +7,14 @@
 
 h2 {
     color: white;
+    margin-bottom: 1rem;
 }
 
 .about-website {
     color: rgb(248, 242, 237);
     text-align: justify;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
 }
 
 .soumik, .somya {

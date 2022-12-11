@@ -100,7 +100,7 @@
 }
 
 #field4 div label input {
-    display: none;
+    /* display: none; */
 }
 
 #field4 div label:hover {
