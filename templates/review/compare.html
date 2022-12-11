@@ -12,26 +12,27 @@
                 <div class="select-date top">
                     <form class="date-form">
                         <label for="Date">Date:</label>
-                        <input type="date" id="date" name="date">
+                        <input type="date"
+                               onfocus="this.max=new Date().toISOString().split('T')[0]"
+                               id="date"
+                               name="date">
                     </form>
                 </div>
                 <div class="select-friend top">
                     <input onclick="show_friends()"
-                        type="text"
-                        placeholder="Compare with..."
-                        id="myInput"
-                        onkeyup="filterFunction()">
+                           type="text"
+                           placeholder="Compare with..."
+                           id="myInput"
+                           onkeyup="filterFunction()">
                     <div id="myDropdown" class="dropdown-content"></div>
                 </div>
                 <div class="review-left bottom">
                     <p id="left-title"></p>
-                    <p id="left-review">
-                    </p>
+                    <p id="left-review"></p>
                 </div>
                 <div class="review-right bottom">
                     <p id="right-title"></p>
-                    <p id="right-review">
-                    </p>
+                    <p id="right-review"></p>
                 </div>
             </div>
         </div>
