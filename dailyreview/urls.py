@@ -25,4 +25,5 @@ urlpatterns = [
     path("logout", LogoutView.as_view(), name="logout"),
     path("review/", include("review.urls")),
     path("friends/", include("friendship.urls")),
+    path("aboutus/", TemplateView.as_view(template_name="aboutus.html")),
 ]
