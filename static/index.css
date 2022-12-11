@@ -46,7 +46,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin: 6rem 30rem;
+    margin: 0rem 30rem;
     border: 3px solid rgb(76, 54, 16);
     border-radius: 0.7rem;
     transition-duration: 0.1s;
@@ -98,4 +98,18 @@
 
 .text {
     padding: 2.6rem;
+}
+
+.welcome-text {
+    color: white;
+    font-size: 1.7rem;
+    text-align: center;
+    padding: 0 30vw;
+}
+
+.logged-out-view {
+    display: flex;
+    flex-direction: column;
+    margin-top: 6rem;
+
 }

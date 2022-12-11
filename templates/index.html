@@ -16,6 +16,8 @@
                 <a href="{% url 'compare' %}"><button>Compare yourself with others</button></a>
             </div>
         {% else %}
+        <div class="logged-out-view">
+            <p class="welcome-text">Join the community and compare your daily habits with like-minded people</p>
             <a href="{% provider_login_url 'google' %}"
                style="text-decoration: none">
                 <div class="google">
@@ -27,6 +29,7 @@
                     </div>
                 </div>
             </a>
+        </div>
         {% endif %}
         <div class="content">
             <div class="him flex-container">
