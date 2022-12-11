@@ -67,6 +67,7 @@ h2 {
 
 .developer-content p:first-child {
     font-size: 1.2rem;
+    font-weight: bold;
 }
 
 .github-linkedin img {
