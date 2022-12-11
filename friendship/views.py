@@ -1,6 +1,8 @@
 import json
 from http import HTTPStatus
 
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404
@@ -10,7 +12,7 @@ from .models import Friendship, FriendshipRequests
 
 
 # Create your views here.
-class MyFriendsView(ListView):
+class MyFriendsView(LoginRequiredMixin, ListView):
     model = Friendship
     template_name: str = "friendship/friends.html"
     context_object_name = "friends_list"
@@ -22,6 +24,7 @@ class MyFriendsView(ListView):
         return queryset
 
 
+@login_required
 def MyFriendsListView(request):
     if request.method == "GET":
         friend_ids = (
@@ -43,6 +46,7 @@ def MyFriendsListView(request):
         return JsonResponse(response, safe=False)
 
 
+@login_required
 def DiscoverFriendsView(request):
     if request.method == "GET":
         friend_ids = Friendship.objects.filter(from_user=request.user).values_list(
@@ -73,7 +77,7 @@ def DiscoverFriendsView(request):
         return JsonResponse(response, safe=False)
 
 
-class FriendRequestsView(ListView):
+class FriendRequestsView(LoginRequiredMixin, ListView):
     model = FriendshipRequests
     template_name: str = "friendship/requests.html"
     context_object_name = "friend_requests"
@@ -86,6 +90,7 @@ class FriendRequestsView(ListView):
         return queryset
 
 
+@login_required
 def SendFriendshipRequestView(request, user_id):
     if request.method == "GET":
         recipient = User.objects.get(id=user_id)
@@ -97,19 +102,18 @@ def SendFriendshipRequestView(request, user_id):
         return HttpResponse(status=HTTPStatus.ACCEPTED)
 
 
+@login_required
 def ProcessFriendRequestView(request, pk):
-    if request.method == "POST":
+    fr: FriendshipRequests = get_object_or_404(FriendshipRequests, pk=pk)
+    if request.method == "POST" and fr.to_user == request.user:
         if request.POST["action"] == "accept":
-            fr: FriendshipRequests = FriendshipRequests.objects.get(pk=pk)
             Friendship.objects.get_or_create(from_user=fr.from_user, to_user=fr.to_user)
             Friendship.objects.get_or_create(from_user=fr.to_user, to_user=fr.from_user)
             fr.accepted = True
             fr.save()
-
             return HttpResponse(status=HTTPStatus.ACCEPTED)
 
         if request.POST["action"] == "reject":
-            fr: FriendshipRequests = get_object_or_404(FriendshipRequests, pk=pk)
             fr.rejected = True
             fr.save()
             return HttpResponse(status=HTTPStatus.ACCEPTED)
