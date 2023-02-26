@@ -46,7 +46,7 @@ class PublicFeed(ListView):
         if not self.request.user.is_authenticated:
             queryset = Review.objects.filter(visibility="EV").order_by("-date")
         else:
-            friend_ids = (
+            friend_ids: list = (
                 Friendship.objects.filter(from_user=self.request.user)
                 .order_by("-created")
                 .values_list("to_user_id", flat=True)
